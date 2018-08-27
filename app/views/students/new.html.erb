@@ -1,0 +1,9 @@
+<h1>Add New Student</h1>
+<%= form_for(@student) do |f| %>
+<%= f.text_field :first_name, placeholder: "Enter student's first name", required: true  %> <br>
+<%= f.text_field :last_name, placeholder: "Enter student's last name", required: true  %> <br>
+<%= f.text_field :age, placeholder: "Enter student's age", required: true  %> <br>
+Highest Completed Education <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'], required: true  %><br>
+<%= f.text_field :email, placeholder: "Enter student's email", required: true %> <br>
+<%= f.submit 'Add' %>
+<% end %>

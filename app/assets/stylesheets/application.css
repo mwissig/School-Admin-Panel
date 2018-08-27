@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+ html {
+   background-color: rgb(191, 191, 200);
+   font-family: 'Roboto Condensed', sans-serif;
+ }
+ .logo {
+   font-family: 'Cinzel Decorative', cursive;
+ }
+ form input {
+   font-family: 'Roboto Condensed', sans-serif;
+   padding: 3px;
+   border-radius: 1px;
+   margin: 2px;
+   border: .5px solid black;
+ }
