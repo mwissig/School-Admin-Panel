@@ -20,10 +20,3 @@
  .logo {
    font-family: 'Cinzel Decorative', cursive;
  }
- form input {
-   font-family: 'Roboto Condensed', sans-serif;
-   padding: 3px;
-   border-radius: 1px;
-   margin: 2px;
-   border: .5px solid black;
- }

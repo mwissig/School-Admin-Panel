@@ -27,19 +27,20 @@ class StudentsController < ApplicationController
 end
 
   def show
-
+    @courses = Course.all
     @student = Student.find(params[:id])
+
   end
 
   def index
-            @students = Student.all.order(:last_name)
-                        @courses = Course.all
+    @students = Student.all.order(:last_name)
+    @courses = Course.all
   end
 
   private
 
   def student_params
-    params.require(:student).permit(:first_name, :last_name, :email, :grades, :education, :course_id, :cohort_id)
+    params.require(:student).permit(:first_name, :last_name, :email, :grade, :age, :education, :course_id, :cohort_id)
     end
 
     def find_student

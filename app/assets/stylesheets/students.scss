@@ -7,3 +7,34 @@
   grid-template-columns: repeat(8, auto);
   width: 90vw;
 }
+.students {
+
+}
+.students form input {
+  font-family: 'Roboto Condensed', sans-serif;
+  padding: 3px;
+  border-radius: 1px;
+  margin: 2px 0;
+  border: none;
+}
+.students button {
+  font-family: 'Roboto Condensed', sans-serif;
+  padding: 3px;
+  border-radius: 1px;
+  margin: 2px 0;
+  border: .5px solid black;
+}
+.students input[type="number"] {
+  width:40px;
+}
+.students input[type="email"] {
+  width:100px;
+}
+.students select {
+  font-family: 'Roboto Condensed', sans-serif;
+  padding: 3px;
+  border-radius: 1px;
+  margin: 2px;
+  border: .5px solid black;
+  background-color: white;
+}

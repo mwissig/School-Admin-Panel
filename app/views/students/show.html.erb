@@ -1,1 +1,24 @@
-show
+<h1>Students</h1>
+<div class="studentGrid">
+<div>Last Name</div>
+<div>First Name</div>
+<div>Email</div>
+<div>Age</div>
+<div>GPA</div>
+<div>Education</div>
+<div>Course</div>
+<div>Cohort</div>
+<% @course = @courses.find_by id: @student.course_id %>
+<div><%= @student.last_name %></div>
+<div><%= @student.first_name %> </div>
+<div> <%= @student.email %></div>
+<div> <%= @student.age %></div>
+<div> <%= @student.grade %></div>
+<div> <%= @student.education %></div>
+<div> <%= @course.name %></div>
+<% if @student.cohort_id != 0 %>
+<div> <%= @student.cohort_id %></div>
+<% else %>
+<div>Not Assigned</div>
+<% end %>
+</div>

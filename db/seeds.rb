@@ -7,17 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-50.times do
+
+100.times do
   i = rand(0..3)
   edu = ["HS", "College", "Masters", "PHD"]
-  User.create(
+  Student.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.unique.email,
     age: rand(16..85),
     education: edu[i],
-    salary: rand(36..120)*1000,
-    admin_priv: rand(0..1),
-    password: "password"
+    grade: rand(0.90..4.00).ceil(2),
+    cohort_id: 0,
+    course_id: rand(1..10)
   )
 end

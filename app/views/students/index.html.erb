@@ -1,5 +1,6 @@
 <h1>Students</h1>
 <div class="studentGrid">
+  <div>ID#</div>
 <div>Last Name</div>
 <div>First Name</div>
 <div>Email</div>
@@ -8,35 +9,40 @@
 <div>Education</div>
 <div>Course</div>
 <div>Cohort</div>
-<% @students.each do |s| %>
-<% p s.course_id %>
-<% @course = @courses.find_by id: s.course_id %>
-<div><%= s.last_name %></div>
-<div><%= s.first_name %> </div>
-<div> <%= s.email %></div>
-<div> <%= s.age %></div>
-<div> <%= s.grade %></div>
-<div> <%= s.education %></div>
-<div> <%= @course.name %></div>
-<% if s.cohort_id != 0 %>
-<div> <%= s.cohort_id %></div>
-<% else %>
-<div>Not Assigned</div>
-<% end %>
-<% end %>
 </div>
-<h1>Students</h1>
-
+<div class ="students">
 <% @students.each do |s| %>
 <%= form_for(s) do |f| %>
-<% @course = @courses.find_by id: s.course_id %>
+<% @courses = [] %>
+<% Course.all.each do |co| %>
+<% arr = [] %>
+<% arr << co.name %>
+<% arr << co.id %>
+<% @courses << arr %>
+<% end %>
+<% if s.id < 100 && s.id > 9 %>
+<%= "0" + s.id.to_s %>
+<% elsif s.id < 10 %>
+<%= "00" + s.id.to_s %>
+<% else %>
+<%= s.id.to_s %>
+<% end %>
 <%= f.text_field :last_name %>
 <%= f.text_field :first_name %>
  <%= f.text_field :email %>
- <%= f.text_field :age %>
- <%=  f.text_field :grade %>
+ <%= f.number_field :age %>
+ <%=  f.number_field :grade, :class => 'text_field', :step => 0.01 %>
  <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
- <%= @course.name %>
+   <%= f.select :course_id, @courses %>
+
+   <% if s.cohort_id != 0 %>
+   <%= s.cohort_id %>
+   <% else %>
+   Not Assigned
+   <% end %>
+      <button onclick="window.location.href='students/<%= s.id %>'">View</button>
 <%= f.submit 'Edit' %>
 <% end %>
+
 <% end %>
+</div>
