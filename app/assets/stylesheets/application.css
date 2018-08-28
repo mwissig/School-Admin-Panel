@@ -20,3 +20,6 @@
  .logo {
    font-family: 'Cinzel Decorative', cursive;
  }
+ul li {
+  display: inline;
+}

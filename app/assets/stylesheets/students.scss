@@ -8,33 +8,52 @@
   width: 90vw;
 }
 .students {
-
+font-size: 12px;
 }
 .students form input {
   font-family: 'Roboto Condensed', sans-serif;
   padding: 3px;
-  border-radius: 1px;
-  margin: 2px 0;
+  margin: 0;
   border: none;
+    background-color: transparent;
+}
+.students form input:hover {
+  background-color: rgb(138, 202, 255);
+}
+.students form:nth-child(even) {
+  background-color: #eeeeee;
+  border-bottom: 1px solid gray;
+}
+.students form:nth-child(odd) {
+  background-color: #FFF;
+  border-bottom: 1px solid gray;
 }
 .students button {
   font-family: 'Roboto Condensed', sans-serif;
   padding: 3px;
-  border-radius: 1px;
-  margin: 2px 0;
-  border: .5px solid black;
+  margin: 0;
+    border: none;
+  background-color: transparent;
+}
+.students button:hover {
+  background-color: rgb(255, 204, 91);
 }
 .students input[type="number"] {
   width:40px;
 }
-.students input[type="email"] {
-  width:100px;
+.students select:hover {
+  background-color: rgb(138, 202, 255);
+}
+.students input[type="submit"]:hover {
+  background-color: rgb(255, 204, 91);
+}
+.students select option:checked:after {
+  background-color: rgb(255, 204, 91);
 }
 .students select {
   font-family: 'Roboto Condensed', sans-serif;
   padding: 3px;
-  border-radius: 1px;
-  margin: 2px;
-  border: .5px solid black;
-  background-color: white;
+  margin: 0;
+  border: none;
+  background-color: transparent;
 }

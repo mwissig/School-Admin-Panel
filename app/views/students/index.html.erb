@@ -1,15 +1,14 @@
 <h1>Students</h1>
-<div class="studentGrid">
-  <div>ID#</div>
-<div>Last Name</div>
-<div>First Name</div>
-<div>Email</div>
-<div>Age</div>
-<div>GPA</div>
-<div>Education</div>
-<div>Course</div>
-<div>Cohort</div>
-</div>
+<span>ID#
+Last Name
+First Name
+Email
+Age
+GPA
+Education
+Course
+Cohort</span>
+
 <div class ="students">
 <% @students.each do |s| %>
 <%= form_for(s) do |f| %>
@@ -20,6 +19,7 @@
 <% arr << co.id %>
 <% @courses << arr %>
 <% end %>
+<span>
 <% if s.id < 100 && s.id > 9 %>
 <%= "0" + s.id.to_s %>
 <% elsif s.id < 10 %>
@@ -40,9 +40,10 @@
    <% else %>
    Not Assigned
    <% end %>
-      <button onclick="window.location.href='students/<%= s.id %>'">View</button>
-<%= f.submit 'Edit' %>
+      <button onclick="window.location.href='students/<%= s.id %>'">View Student Profile <i class="far fa-eye"></i></button>
+<%= f.submit 'Submit Changes' %> <i class="fas fa-pencil-alt"></i>
+<% end %>
+</span>
 <% end %>
 
-<% end %>
 </div>
