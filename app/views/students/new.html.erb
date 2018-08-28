@@ -1,9 +1,22 @@
 <h1>Add New Student</h1>
 <%= form_for(@student) do |f| %>
-<%= f.text_field :first_name, placeholder: "Enter student's first name", required: true  %> <br>
-<%= f.text_field :last_name, placeholder: "Enter student's last name", required: true  %> <br>
-<%= f.text_field :age, placeholder: "Enter student's age", required: true  %> <br>
-Highest Completed Education <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'], required: true  %><br>
-<%= f.text_field :email, placeholder: "Enter student's email", required: true %> <br>
-<%= f.submit 'Add' %>
+<% @courses = [] %>
+<% Course.all.each do |co| %>
+<% arr = [] %>
+<% arr << co.name %>
+<% arr << co.id %>
+<% @courses << arr %>
 <% end %>
+<span>
+Add new student
+<%= f.text_field :last_name, placeholder: "Last Name"%>
+<%= f.text_field :first_name, placeholder: "First Name" %>
+ <%= f.text_field :email, placeholder: "Email Address" %>
+ <%= f.number_field :age, placeholder: "Age" %>
+ <%= f.hidden_field :grade, value: 0.00, :class => 'text_field', :step => 0.01 %>
+  <%= f.hidden_field :cohort_id, value: 0 %>
+ <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
+   <%= f.select :course_id, @courses %>
+<%= f.submit 'Add Student' %>
+<% end %>
+</span>

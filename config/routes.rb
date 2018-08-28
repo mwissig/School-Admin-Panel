@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+get 'login' => 'sessions#new'
+post 'login' => 'sessions#create'
+delete 'logout' => 'sessions#destroy'
+
   get 'cohorts/new'
   get 'cohorts/edit'
   get 'cohorts/show'
@@ -10,8 +15,8 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'register' => 'users#new'
   get 'login' => 'users#new'
-  get 'admin' => 'users#new'
-  get 'instructors' => 'users#index'
+  get 'admin' => 'users#admin'
+  get 'instructors' => 'users#instructors'
   get 'courses' => 'courses#index'
   get 'students' => 'students#index'
 

@@ -26,6 +26,14 @@ class UsersController < ApplicationController
   @users = User.all
   end
 
+  def admin
+  @admins = User.where(admin_priv: 1).order(:last_name)
+  end
+
+  def instructors
+  @instructors = User.where(admin_priv: 0).order(:last_name)
+  end
+
   private
 
   def user_params

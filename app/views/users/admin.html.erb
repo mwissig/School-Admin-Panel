@@ -1,0 +1,25 @@
+<h1>Users</h1>
+<div class="userGrid">
+<div>Last Name</div>
+<div>First Name</div>
+<div>Email</div>
+<div>Age</div>
+<div>Education</div>
+<div>Salary</div>
+<div>Role</div>
+<% @admins.each do |u| %>
+<div><%= u.last_name %></div>
+<div><%= u.first_name %> </div>
+<div> <%= u.email %></div>
+<div> <%= u.age %></div>
+<div> <%= u.education %></div>
+<div> <%= u.salary %></div>
+<% if u.admin_priv == 0 %>
+<div>Instructor</div>
+<% elsif u.admin_priv == 1 %>
+<div>Administrator</div>
+<% elsif u.admin_priv == 2 %>
+<div>President</div>
+<% end %>
+<% end %>
+</div>

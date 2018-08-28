@@ -33,6 +33,7 @@ end
   end
 
   def index
+        @student = Student.new
     @students = Student.all.order(:last_name)
     @courses = Course.all
   end

@@ -5,9 +5,10 @@
 .studentGrid {
   display: grid;
   grid-template-columns: repeat(8, auto);
-  width: 90vw;
+  width: 100%;
 }
 .students {
+    width: 100%;
 font-size: 12px;
 }
 .students form input {
@@ -16,6 +17,12 @@ font-size: 12px;
   margin: 0;
   border: none;
     background-color: transparent;
+}
+.emailfield {
+    width:180px;
+}
+.namefield {
+  width: 80px;
 }
 .students form input:hover {
   background-color: rgb(138, 202, 255);

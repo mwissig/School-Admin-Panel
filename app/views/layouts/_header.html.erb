@@ -1,9 +1,24 @@
 <ul>
   <li><h2 class='logo'>Nameofschool School</h2></li>
+<% if logged_in? %>
+<li><%= link_to "Log out", logout_path, method: :delete %></li>
+<% else %>
 <li><%= link_to "Create an account", register_path %></li>
 <li><%= link_to "Log in", login_path %></li>
+<% end %>
 <li><%= link_to "Administrators", admin_path %></li>
 <li><%= link_to "Instructors", instructors_path %></li>
 <li><%= link_to "Courses", courses_path %></li>
 <li><%= link_to "Students", students_path %></li>
 </ul>
+<% if logged_in? %>
+You are logged in, <%= current_user.email %><br>
+Your role is:
+<% if current_user.admin_priv == 0 %>
+Instructor
+<% elsif current_user.admin_priv == 1 %>
+Administrator
+<% elsif current_user.admin_priv == 2 %>
+President
+<% end %>
+<% end %>
