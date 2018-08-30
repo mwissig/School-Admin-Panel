@@ -1,4 +1,5 @@
 class CohortsController < ApplicationController
+  belongs_to :course
       before_action :find_cohort, only: [:show, :edit, :update]
   def new
     @cohorts = Cohort.all
@@ -52,10 +53,17 @@ end
   def show
 
     @cohort = Cohort.find(params[:id])
+    @students = Student.all.order(:last_name)
+  end
+
+  def your
+    @cohort = Cohort.find_by(instructor_id: current_user[:id])
+    @students = Student.all.order(:last_name)
   end
 
   def index
-            @cohorts = Cohort.all
+        @students = Student.all.order(:last_name)
+            @cohorts = Cohort.all.order(:course_id)
             @cohort = Cohort.new
             @users = User.all.order(:last_name)
             @courses = []

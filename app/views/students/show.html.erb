@@ -9,6 +9,7 @@
 <div>Course</div>
 <div>Cohort</div>
 <% @course = @courses.find_by id: @student.course_id %>
+<% @cohort = @cohorts.find_by id: @student.cohort_id %>
 <div><%= @student.last_name %></div>
 <div><%= @student.first_name %> </div>
 <div> <%= @student.email %></div>
@@ -17,7 +18,7 @@
 <div> <%= @student.education %></div>
 <div> <%= @course.name %></div>
 <% if @student.cohort_id != 0 %>
-<div> <%= @student.cohort_id %></div>
+<div> <%= @cohort.name %></div>
 <% else %>
 <div>Not Assigned</div>
 <% end %>

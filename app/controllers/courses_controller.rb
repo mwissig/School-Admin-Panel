@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  has_many :cohorts, dependent: :destroy
   def new
     @course = Course.new
 

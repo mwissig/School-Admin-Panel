@@ -7,60 +7,7 @@
   grid-template-columns: repeat(8, auto);
   width: 100%;
 }
-.students {
+.students{
     width: 100%;
 font-size: 12px;
-}
-.students form input {
-  font-family: 'Roboto Condensed', sans-serif;
-  padding: 3px;
-  margin: 0;
-  border: none;
-    background-color: transparent;
-}
-.emailfield {
-    width:180px;
-}
-.namefield {
-  width: 80px;
-}
-.students form input:hover {
-  background-color: rgb(138, 202, 255);
-}
-.students form:nth-child(even) {
-  background-color: #eeeeee;
-  border-bottom: 1px solid gray;
-}
-.students form:nth-child(odd) {
-  background-color: #FFF;
-  border-bottom: 1px solid gray;
-}
-.students button {
-  font-family: 'Roboto Condensed', sans-serif;
-  padding: 3px;
-  margin: 0;
-    border: none;
-  background-color: transparent;
-}
-.students button:hover {
-  background-color: rgb(255, 204, 91);
-}
-.students input[type="number"] {
-  width:40px;
-}
-.students select:hover {
-  background-color: rgb(138, 202, 255);
-}
-.students input[type="submit"]:hover {
-  background-color: rgb(255, 204, 91);
-}
-.students select option:checked:after {
-  background-color: rgb(255, 204, 91);
-}
-.students select {
-  font-family: 'Roboto Condensed', sans-serif;
-  padding: 3px;
-  margin: 0;
-  border: none;
-  background-color: transparent;
 }

@@ -1,0 +1,55 @@
+<% if @cohort != nil %>
+
+<h1><%= @cohort.name %></h1>
+
+    <p>Date: <%= @cohort.start_date.to_datetime.strftime("%m/%e/%y") %> to <%= @cohort.end_date.to_datetime.strftime("%m/%e/%y") %><p>
+
+
+<% @students.each do |s| %>
+<% if s.cohort_id == @cohort.id %>
+<%= form_for(s) do |f| %>
+
+<% @cohorts = [["No Cohort Assigned", 0]] %>
+<% Cohort.all.each do |coh| %>
+  <% if coh.course_id == s.course_id %>
+  <% arr = [] %>
+  <% arr << coh.name %>
+  <% arr << coh.id %>
+  <% @cohorts << arr %>
+  <% end %>
+<% end %>
+
+<% @courses = [] %>
+<% Course.all.each do |co| %>
+<% arr = [] %>
+<% arr << co.name %>
+<% arr << co.id %>
+<% @courses << arr %>
+<% end %>
+<span>
+<% if s.id < 100 && s.id > 9 %>
+<%= "0" + s.id.to_s %>
+<% elsif s.id < 10 %>
+<%= "00" + s.id.to_s %>
+<% else %>
+<%= s.id.to_s %>
+<% end %>
+<%= f.text_field :last_name, class: 'namefield',:readonly => true %>
+<%= f.text_field :first_name, class: 'namefield',:readonly => true %>
+ <%= f.text_field :email, class: 'emailfield', :readonly => true %>
+ <%= f.number_field :age, :readonly => true %>
+ <%=  f.number_field :grade, :class => 'text_field', :step => 0.01 %>
+ <%= f.text_field :education, :readonly => true %>
+   <%= f.select :course_id, @courses, :disabled => @category_already_chosen %>
+    <%= f.select :cohort_id, @cohorts, class: 'cohortfield' %>
+      <button onclick="window.location.href='../students/<%= s.id %>'">View Student Profile <i class="far fa-eye"></i></button>
+<%= f.submit 'Submit Changes' %> <i class="fas fa-pencil-alt"></i>
+
+<% end %>
+
+</span>
+<% end %>
+<% end %>
+<% else %>
+<p>You have no cohorts</p>
+<% end %>

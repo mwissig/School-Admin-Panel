@@ -12,6 +12,17 @@ Cohort</span>
 <div class ="students">
 <% @students.each do |s| %>
 <%= form_for(s) do |f| %>
+
+<% @cohorts = [["No Cohort Assigned", 0]] %>
+<% Cohort.all.each do |coh| %>
+  <% if coh.course_id == s.course_id %>
+  <% arr = [] %>
+  <% arr << coh.name %>
+  <% arr << coh.id %>
+  <% @cohorts << arr %>
+  <% end %>
+<% end %>
+
 <% @courses = [] %>
 <% Course.all.each do |co| %>
 <% arr = [] %>
@@ -34,17 +45,16 @@ Cohort</span>
  <%=  f.number_field :grade, :class => 'text_field', :step => 0.01 %>
  <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
    <%= f.select :course_id, @courses %>
-
-   <% if s.cohort_id != 0 %>
-   <%= s.cohort_id %>
-   <% else %>
-   Not Assigned
-   <% end %>
-      <button onclick="window.location.href='students/<%= s.id %>'">View Student Profile <i class="far fa-eye"></i></button>
+    <%= f.select :cohort_id,  @cohorts, class: 'cohortfield' %>
 <%= f.submit 'Submit Changes' %> <i class="fas fa-pencil-alt"></i>
 <% end %>
+<%= link_to "View Student Profile", student_path(s) %>
+<i class="far fa-eye"></i>
 </span>
 <% end %>
+
+
+
 
 <%= form_for(@student) do |f| %>
 <% @courses = [] %>

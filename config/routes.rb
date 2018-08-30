@@ -5,6 +5,7 @@ post 'login' => 'sessions#create'
 delete 'logout' => 'sessions#destroy'
 
   get 'cohorts/new'
+    get 'cohorts/your'
   get 'cohorts/edit'
   get 'cohorts/show'
   get 'cohorts/index'

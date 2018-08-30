@@ -20,22 +20,23 @@ class StudentsController < ApplicationController
   def update
   if @student.update(student_params)
     p "student successfully updated"
-    redirect_to @student
+redirect_back(fallback_location: students_path)
   else
     render 'edit'
   end
 end
 
   def show
+    @cohorts = Cohort.all
     @courses = Course.all
     @student = Student.find(params[:id])
-
   end
 
   def index
         @student = Student.new
     @students = Student.all.order(:last_name)
     @courses = Course.all
+
   end
 
   private

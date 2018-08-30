@@ -2,6 +2,12 @@
 
 
 <% @cohorts.each do |co| %>
+  <% @num_stu = 0 %>
+  <% @students.each do |s| %>
+    <% if co.id == s.cohort_id %>
+    <% @num_stu += 1 %>
+    <% end %>
+  <% end %>
     <%= form_for co do |f| %>
     <%= f.select :course_id, @courses %>
     <%= f.text_field :name%>
@@ -10,6 +16,8 @@
     <%= f.text_field :end_date %>
     <%= f.select :instructor_id, @instructors %>
     <%= f.submit 'Edit Cohort' %>
+      <button onclick="window.location.href='cohort/<%= co.id %>'">View Students <i class="far fa-eye"></i></button>
+      ( <%= @num_stu %> )
     <% end %>
     <% end %>
 
