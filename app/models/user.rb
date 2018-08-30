@@ -1,5 +1,6 @@
 
 class User < ApplicationRecord
+    has_many :cohorts
   before_save :default_values
   def default_values
     self.admin_priv ||= 0

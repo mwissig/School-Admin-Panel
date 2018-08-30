@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  has_many :cohorts
   def new
     @user = User.new
 

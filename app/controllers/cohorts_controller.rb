@@ -1,5 +1,4 @@
 class CohortsController < ApplicationController
-  belongs_to :course
       before_action :find_cohort, only: [:show, :edit, :update]
   def new
     @cohorts = Cohort.all

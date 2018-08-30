@@ -1,6 +1,4 @@
-<h1>Courses#index</h1>
-<p>Find me in app/views/courses/index.html.erb</p>
+<h1>Courses</h1>
 <% @courses.each do |c| %>
-<div> <%= c.name %></div>
-<div> <%= c.hours %></div>
+<span><p> <%= c.name %> <%= c.hours %> hours</p></span>
 <% end %>
