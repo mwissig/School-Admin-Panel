@@ -1,3 +1,4 @@
+<% if logged_in? %>
 <h1>Create New Cohort</h1>
 <% if current_user.admin_priv == 0 %>
 <p>This form will assign you as the instructor for this cohort.</p>
@@ -19,3 +20,4 @@
     <%= f.submit 'Create Cohort' %>
     <% end %>
   <% end %>
+<% end %>

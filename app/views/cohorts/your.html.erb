@@ -1,3 +1,5 @@
+<% if logged_in? %>
+
 <h1>Your Cohorts</h1>
 <% if @yourcohorts != nil %>
 
@@ -67,4 +69,5 @@
 
 <% else %>
 <p>You have no cohorts</p>
+<% end %>
 <% end %>

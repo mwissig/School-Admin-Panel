@@ -1,3 +1,5 @@
+<% if logged_in? %>
+
 <h1>Create New Course</h1>
 
 <%= form_for @course do |f| %>
@@ -5,4 +7,6 @@
 Hours:
 <%= f.number_field :hours, placeholder: 0, :class => 'text_field', :step => 10, required: true %>
 <%= f.submit 'Create Course' %>
+<% end %>
+
 <% end %>
