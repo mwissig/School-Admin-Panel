@@ -40,7 +40,7 @@
 <i class="fas fa-plus slider" onclick='revealNewCohort()'></i>
 |
 <% if current_user.admin_priv == 0 %>
-<%= link_to cohorts_your_path, :alt => "Your Cohorts" do %>
+<%= link_to your_path, :alt => "Your Cohorts" do %>
 <i class="fas fa-user"></i>
 <% end %>
 |
@@ -64,12 +64,7 @@
 
 <div id="studentsSearchBar" class="searchoptions hidden">
 <br><br>Search by:<br>
-NAME<br>
-EMAIL<br>
-ID#<br>
-COURSE<br>
-COHORT<br>
-INSTRUCTOR<br>
+<span onclick="revealStudentsSearchByName()">Name or email</span><br>
 <i class="fas fa-times slider" alt="Close" onclick="closeSearchOptionsStudent()"></i>
 </div>
 <% end %>

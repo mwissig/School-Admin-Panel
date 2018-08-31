@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Roboto+Condensed" rel="stylesheet">
@@ -15,9 +15,10 @@
     <%= render 'layouts/header' %>
     <%= render 'layouts/sidebar' %>
     <%= render 'layouts/optionbar' %>
-        <%= render 'layouts/creators' %>
-        <div class="container">
-    <%= yield %>
-  </div>
+    <%= render 'layouts/creators' %>
+    <%= render 'layouts/searchbar' %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

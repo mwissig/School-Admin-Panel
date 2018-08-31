@@ -1,30 +1,19 @@
 Rails.application.routes.draw do
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
 
-get 'login' => 'sessions#new'
-post 'login' => 'sessions#create'
-delete 'logout' => 'sessions#destroy'
+  get 'register' => 'users#new'
+  get 'login' => 'users#new'
+  get 'admin' => 'users#admin'
+  get 'instructors' => 'users#instructors'
+  get 'admin' => 'users#admin'
 
-get 'register' => 'users#new'
-get 'login' => 'users#new'
-get 'admin' => 'users#admin'
-get 'instructors' => 'users#instructors'
-get 'admin' => 'users#admin'
+  get 'courses' => 'courses#index'
+  get 'students' => 'students#index'
 
-get 'courses' => 'courses#index'
-get 'students' => 'students#index'
-
-  get 'cohorts/new'
-  get 'cohorts/your'
-
-  get 'cohorts/edit'
-  get 'cohorts/show'
-  get 'cohorts/index'
-  get 'courses/new'
-  get 'courses/edit'
-  get 'courses/show'
-  get 'courses/index'
-  get 'pages/home'
-
+  get 'results' => 'pages#results'
+get 'your' => 'cohorts#your'
 
   root 'pages#home'
 
@@ -34,11 +23,16 @@ get 'students' => 'students#index'
   resources :cohorts
 
   get 'students/new'
-  get 'students/edit'
   get 'students/show'
   get 'users/new'
-  get 'users/edit'
   get 'users/show'
   get 'users/index'
+  get 'cohorts/new'
+
+  get 'cohorts/show'
+  get 'cohorts/index'
+  get 'courses/new'
+  get 'courses/show'
+  get 'courses/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

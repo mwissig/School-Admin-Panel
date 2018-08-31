@@ -18,7 +18,7 @@
     <p class="desc">Date: <%= coh.start_date.to_datetime.strftime("%m/%e/%y") %> to <%= coh.end_date.to_datetime.strftime("%m/%e/%y") %><p>
 
 
-      <%= form_for coh do |f| %>
+      <%= form_for coh, :html => {class: 'titlebar'} do |f| %>
       <%= f.select :course_id, @courses %>
       <%= f.text_field :name%>
 

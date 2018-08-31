@@ -36,6 +36,7 @@ end
     @courses = Course.all
     end
 
+
   private
 
   def student_params

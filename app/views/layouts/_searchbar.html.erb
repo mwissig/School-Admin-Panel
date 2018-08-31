@@ -1,0 +1,11 @@
+<% if logged_in? %>
+
+
+<div id="studentsSearchByNameBar" class="searchbar hidden">
+  Search students by name or email
+  <%= form_tag('/results', method: 'get') do %>
+    <%= text_field_tag(:q) %><br>
+    <%= submit_tag("Search") %> <i class="fas fa-times slider" alt="Close" onclick="closeStudentsSearchByName()"></i>
+  <% end %>
+</div>
+<% end %>

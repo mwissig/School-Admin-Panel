@@ -1,0 +1,7 @@
+<h1>Students matching "<%= @results %>" </h1>
+<% if @final_results != nil %>
+<% @final_results.each do |res| %>
+Student # <%= res.id %>: <%= link_to "#{res.first_name} #{res.last_name}", res %> <%= res.email %> <br>
+
+<% end %>
+<% end %>

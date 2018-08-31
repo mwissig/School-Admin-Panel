@@ -36,6 +36,7 @@ function slideoutStaff() {
 
 function closeStaff() {
   document.getElementById('staffNav').classList.remove('reveal');
+  staffSliderOpen = false;
 }
 
 function slideoutStudents() {
@@ -55,7 +56,9 @@ function slideoutStudents() {
 function closeStudents() {
   document.getElementById('studentsNav').classList.remove('reveal');
   closeSearchOptionsStudent();
+      closeStudentsSearchByName();
   closeNewStudent();
+  studentsSliderOpen = false;
 }
 
 function slideoutCohorts() {
@@ -64,7 +67,7 @@ function slideoutCohorts() {
     document.getElementById('cohortsNav').classList.add('reveal');
     closeCourses();
     closeStudents();
-        closeStaff();
+    closeStaff();
     cohortsSliderOpen = true;
   } else {
     closeCohorts();
@@ -75,6 +78,7 @@ function slideoutCohorts() {
 function closeCohorts() {
   document.getElementById('cohortsNav').classList.remove('reveal');
   closeNewCohort();
+  cohortsSliderOpen = false;
 }
 
 
@@ -84,7 +88,7 @@ function slideoutCourses() {
     document.getElementById('coursesNav').classList.add('reveal');
     closeCohorts();
     closeStudents();
-        closeStaff();
+    closeStaff();
     coursesSliderOpen = true;
   } else {
     closeCourses();
@@ -95,6 +99,7 @@ function slideoutCourses() {
 function closeCourses() {
   document.getElementById('coursesNav').classList.remove('reveal');
   closeNewCourse();
+  coursesSliderOpen = false;
 }
 
 var studentsSearchBarOpen = false;
@@ -115,6 +120,8 @@ function revealSearchOptionsStudent() {
 function closeSearchOptionsStudent() {
   document.getElementById('studentsSearchBar').classList.add('hidden');
   document.getElementById('studentsSearchBar').classList.remove('searchoptionsreveal');
+      closeStudentsSearchByName();
+  studentsSearchBarOpen = false;
 }
 
 
@@ -135,6 +142,7 @@ function revealNewStudent() {
 function closeNewStudent() {
   document.getElementById('newStudentBar').classList.add('hidden');
   document.getElementById('newStudentBar').classList.remove('creatorreveal');
+  newStudentBarOpen = false;
 }
 
 var newCourseBarOpen = false;
@@ -153,7 +161,30 @@ function revealNewCourse() {
 function closeNewCourse() {
   document.getElementById('newCourseBar').classList.add('hidden');
   document.getElementById('newCourseBar').classList.remove('creatorreveal');
+  newCourseBarOpen = false;
 }
+
+
+var studentsSearchByNameBarOpen = false;
+
+function revealStudentsSearchByName() {
+  if (studentsSearchByNameBarOpen == false) {
+    document.getElementById('studentsSearchByNameBar').classList.remove('hidden');
+    document.getElementById('studentsSearchByNameBar').classList.add('saerchbarreveal');
+    studentsSearchByNameBarOpen = true;
+  } else {
+    studentsSearchByNameBarOpen = false;
+    closeStudentsSearchByName();
+  }
+}
+
+function closeStudentsSearchByName() {
+  document.getElementById('studentsSearchByNameBar').classList.add('hidden');
+  document.getElementById('studentsSearchByNameBar').classList.remove('saerchbarreveal');
+  studentsSearchByNameBarOpen = false;
+}
+
+
 
 var newCohortBarOpen = false;
 
@@ -171,4 +202,5 @@ function revealNewCohort() {
 function closeNewCohort() {
   document.getElementById('newCohortBar').classList.add('hidden');
   document.getElementById('newCohortBar').classList.remove('creatorreveal');
+  newCohortBarOpen = false;
 }

@@ -39,6 +39,7 @@
 <% end %>
 
 <% if @user.admin_priv == 0 && @user_cohorts != nil %>
+<h3><%= link_to "Your Cohorts", your_path %></h3>
   <% @user_cohorts.each do |coh| %>
 
     <% @num_stu = 0 %>
@@ -48,12 +49,6 @@
         <% end %>
 
         <% @coursename = Course.find_by(id: coh.course_id) %>
-
-          <p class="desc">Date:
-            <%= coh.start_date.to_datetime.strftime("%m/%e/%y") %>
-            to
-            <%= coh.end_date.to_datetime.strftime("%m/%e/%y") %>
-            <p>
 
               <%= form_for coh do |f| %>
               <%= link_to "#{coh.name}", cohort_path(coh) %>
@@ -68,7 +63,7 @@
               <%= f.text_field :end_date %>
               <%= f.submit 'Edit Cohort' %>
               <%= @num_stu %>
-              students:
+              students
             <% end %>
                   <% end %>
           <% end %>
