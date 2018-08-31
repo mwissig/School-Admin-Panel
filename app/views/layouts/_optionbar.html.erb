@@ -1,27 +1,47 @@
 <% if logged_in? %>
 
-  <div id="studentsNav" class="optionbar hidden">
-    <%= link_to students_path, :alt => "View / Edit", :alt => "View / Edit" do %>
-    <i class="far fa-eye"></i>/<i class="fas fa-pencil-alt"></i>
+  <div id="staffNav" class="optionbar hidden">
+    <%= link_to users_path, :alt => "View / Edit", :alt => "Staff" do %>
+<i class="fas fa-users"></i>
   <% end %>
   |
-  <i class="fas fa-plus slider" onclick='revealNewStudent()'></i>
+    <%= link_to admin_path, :alt => "View / Edit", :alt => "Admin" do %>
+<i class="fas fa-user-tie"></i>
+  <% end %>
   |
-  <i class="fas fa-search slider" onclick='revealSearchOptionsStudent()'></i>
-  |
-  <i class="fas fa-times slider" alt="Close" onclick="closeStudents()"></i>
+  <%= link_to instructors_path, :alt => "View / Edit", :alt => "Instructors" do %>
+  <i class="fas fa-chalkboard-teacher"></i>
+<% end %>
+|
+<%= link_to user_path(current_user), :alt => "Your Page" do %>
+<i class="fas fa-user"></i>
+<% end %>
+|
+<i class="fas fa-times slider" alt="Close" onclick="closeStaff()"></i>
+</div>
+
+<div id="studentsNav" class="optionbar hidden">
+<%= link_to students_path, :alt => "View / Edit", :alt => "View / Edit" do %>
+<i class="far fa-eye"></i>/<i class="fas fa-pencil-alt"></i>
+<% end %>
+|
+<i class="fas fa-plus slider" onclick='revealNewStudent()'></i>
+|
+<i class="fas fa-search slider" onclick='revealSearchOptionsStudent()'></i>
+|
+<i class="fas fa-times slider" alt="Close" onclick="closeStudents()"></i>
 </div>
 
 <div id="cohortsNav" class="optionbar hidden">
-  <%= link_to cohorts_path, :alt => "View / Edit" do %>
-  <i class="far fa-eye"></i>/<i class="fas fa-pencil-alt"></i>
+<%= link_to cohorts_path, :alt => "View / Edit" do %>
+<i class="far fa-eye"></i>/<i class="fas fa-pencil-alt"></i>
 <% end %>
 |
 <i class="fas fa-plus slider" onclick='revealNewCohort()'></i>
 |
 <% if current_user.admin_priv == 0 %>
-  <%= link_to cohorts_your_path, :alt => "Your Cohorts" do %>
-  <i class="fas fa-user"></i>
+<%= link_to cohorts_your_path, :alt => "Your Cohorts" do %>
+<i class="fas fa-user"></i>
 <% end %>
 |
 <% end %>

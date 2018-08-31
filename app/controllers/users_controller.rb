@@ -27,6 +27,7 @@ end
 
   def show
     @user = User.find(params[:id])
+    @user_cohorts = Cohort.where(instructor_id: @user.id)
   end
 
   def index

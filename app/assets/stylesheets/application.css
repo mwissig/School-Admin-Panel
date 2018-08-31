@@ -264,7 +264,9 @@ header {
 .reveal {
   left: 150px;
 }
-
+#staffNav {
+  top: 110px;
+}
 #studentsNav {
   top: 170px;
 }

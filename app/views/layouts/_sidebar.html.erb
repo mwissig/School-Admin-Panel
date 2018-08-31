@@ -1,9 +1,8 @@
-<div class="sidebar">
+<div class="sidebar"><br>
   <ul>
     <% if logged_in? %>
       <li><%= link_to "Log out", logout_path, method: :delete %></li>
-      <li><%= link_to "Administrators", admin_path %></li>
-      <li><%= link_to "Instructors", instructors_path %></li>
+      <li class="slider" onclick='slideoutStaff()'>Staff</li>
       <li class="slider" onclick='slideoutCourses()'>Courses</li>
       <li class="slider" onclick='slideoutCohorts()'>Cohorts</li>
       <li class="slider" onclick='slideoutStudents()'>Students</li>

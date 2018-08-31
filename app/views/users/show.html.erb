@@ -1,4 +1,72 @@
-<h1>Users</h1>
-<% @users.each do |u| %>
-<p><%= u.full_name %><br></p>
+<h1><%= @user.full_name %></h1>
+
+<%= form_for(@user) do |f| %>
+<% if current_user.id == @user.id %>
+
+  <%= f.text_field :first_name, :class => 'namefield' %>
+  <%= f.text_field :last_name, :class => 'namefield' %>
+  <%= f.number_field :age %>
+  <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
+  <%= f.text_field :email %>
+  <%= f.number_field :salary, :class => 'text_field salary', :step => 1000, :readonly => true %>
+  Role:
+  <%= f.select :admin_priv, [['Instructor', 0],["Administrator", 1]] %>
+  <%= f.password_field :password, value: :password %>
+  <%= f.submit 'Submit Changes' %>
+
+  <% elsif current_user.admin_priv > 0 && current_user.id != @user.id %>
+
+    <%= f.text_field :first_name, :class => 'namefield' %>
+    <%= f.text_field :last_name, :class => 'namefield' %>
+    <%= f.number_field :age %>
+    <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
+    <%= f.text_field :email %>
+    <%= f.number_field :salary, :class => 'text_field salary', :step => 1000 %>
+    Role:
+    <%= f.select :admin_priv, [['Instructor', 0],["Administrator", 1]] %>
+    <%= f.hidden_field :password, value: :password %>
+    <%= f.submit 'Submit Changes' %>
+
+  <% else %>
+
+    <span><%= f.text_field :first_name, :readonly => true %>
+      <%= f.text_field :last_name, :readonly => true %>
+      <%= f.text_field :email, :readonly => true %></span><br>
+
+  <% end %>
 <% end %>
+
+<% if @user.admin_priv == 0 && @user_cohorts != nil %>
+  <% @user_cohorts.each do |coh| %>
+
+    <% @num_stu = 0 %>
+      <% @students.each do |s| %>
+        <% if coh.id == s.cohort_id %>
+          <% @num_stu += 1 %><% end %>
+        <% end %>
+
+        <% @coursename = Course.find_by(id: coh.course_id) %>
+
+          <p class="desc">Date:
+            <%= coh.start_date.to_datetime.strftime("%m/%e/%y") %>
+            to
+            <%= coh.end_date.to_datetime.strftime("%m/%e/%y") %>
+            <p>
+
+              <%= form_for coh do |f| %>
+              <%= link_to "#{coh.name}", cohort_path(coh) %>
+
+              (
+              <%= link_to "#{@coursename.name}", course_path(@coursename) %>
+              )
+              <%= f.text_field :name%>
+
+              <%= f.text_field :start_date %>
+              to
+              <%= f.text_field :end_date %>
+              <%= f.submit 'Edit Cohort' %>
+              <%= @num_stu %>
+              students:
+            <% end %>
+                  <% end %>
+          <% end %>

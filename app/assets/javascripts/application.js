@@ -17,7 +17,26 @@
 var studentsSliderOpen = false;
 var cohortsSliderOpen = false;
 var coursesSliderOpen = false;
+var staffSliderOpen = false;
 
+
+function slideoutStaff() {
+  if (staffSliderOpen == false) {
+    document.getElementById('staffNav').classList.remove('hidden');
+    document.getElementById('staffNav').classList.add('reveal');
+    closeCohorts();
+    closeCourses();
+    closeStudents();
+    staffSliderOpen = true;
+  } else {
+    closeStaff();
+    staffSliderOpen = false;
+  }
+}
+
+function closeStaff() {
+  document.getElementById('staffNav').classList.remove('reveal');
+}
 
 function slideoutStudents() {
   if (studentsSliderOpen == false) {
@@ -25,6 +44,7 @@ function slideoutStudents() {
     document.getElementById('studentsNav').classList.add('reveal');
     closeCohorts();
     closeCourses();
+    closeStaff();
     studentsSliderOpen = true;
   } else {
     closeStudents();
@@ -44,6 +64,7 @@ function slideoutCohorts() {
     document.getElementById('cohortsNav').classList.add('reveal');
     closeCourses();
     closeStudents();
+        closeStaff();
     cohortsSliderOpen = true;
   } else {
     closeCohorts();
@@ -63,6 +84,7 @@ function slideoutCourses() {
     document.getElementById('coursesNav').classList.add('reveal');
     closeCohorts();
     closeStudents();
+        closeStaff();
     coursesSliderOpen = true;
   } else {
     closeCourses();
