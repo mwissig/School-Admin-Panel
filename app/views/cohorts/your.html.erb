@@ -1,12 +1,33 @@
-<% if @cohort != nil %>
+<h1>Your Cohorts</h1>
+<% if @yourcohorts != nil %>
 
-<h1><%= @cohort.name %></h1>
 
-    <p>Date: <%= @cohort.start_date.to_datetime.strftime("%m/%e/%y") %> to <%= @cohort.end_date.to_datetime.strftime("%m/%e/%y") %><p>
+<% @yourcohorts.each do |coh| %>
 
+<% @num_stu = 0 %>
+<% @students.each do |s| %>
+  <% if coh.id == s.cohort_id %>
+  <% @num_stu += 1 %>
+  <% end %>
+<% end %>
+
+<% @coursename = Course.find_by(id: coh.course_id) %>
+<h2><%= link_to "#{coh.name}", cohort_path(coh) %> <small>(<%= @coursename.name %>) </small></h2>
+    <p class="desc">Date: <%= coh.start_date.to_datetime.strftime("%m/%e/%y") %> to <%= coh.end_date.to_datetime.strftime("%m/%e/%y") %><p>
+
+
+      <%= form_for coh do |f| %>
+      <%= f.select :course_id, @courses %>
+      <%= f.text_field :name%>
+
+      <%= f.text_field :start_date %> to
+      <%= f.text_field :end_date %>
+      <%= f.submit 'Edit Cohort' %>
+         <%= @num_stu %> students:
+      <% end %>
 
 <% @students.each do |s| %>
-<% if s.cohort_id == @cohort.id %>
+<% if s.cohort_id == coh.id %>
 <%= form_for(s) do |f| %>
 
 <% @cohorts = [["No Cohort Assigned", 0]] %>
@@ -19,13 +40,6 @@
   <% end %>
 <% end %>
 
-<% @courses = [] %>
-<% Course.all.each do |co| %>
-<% arr = [] %>
-<% arr << co.name %>
-<% arr << co.id %>
-<% @courses << arr %>
-<% end %>
 <span>
 <% if s.id < 100 && s.id > 9 %>
 <%= "0" + s.id.to_s %>
@@ -37,12 +51,11 @@
 <%= f.text_field :last_name, class: 'namefield',:readonly => true %>
 <%= f.text_field :first_name, class: 'namefield',:readonly => true %>
  <%= f.text_field :email, class: 'emailfield', :readonly => true %>
- <%= f.number_field :age, :readonly => true %>
  <%=  f.number_field :grade, :class => 'text_field', :step => 0.01 %>
- <%= f.text_field :education, :readonly => true %>
-   <%= f.select :course_id, @courses, :disabled => @category_already_chosen %>
     <%= f.select :cohort_id, @cohorts, class: 'cohortfield' %>
-      <button onclick="window.location.href='../students/<%= s.id %>'">View Student Profile <i class="far fa-eye"></i></button>
+    <%= link_to student_path(s) do %>
+    View Student Profile <i class="far fa-eye"></i>
+    <% end %>
 <%= f.submit 'Submit Changes' %> <i class="fas fa-pencil-alt"></i>
 
 <% end %>
@@ -50,6 +63,8 @@
 </span>
 <% end %>
 <% end %>
+<% end %>
+
 <% else %>
 <p>You have no cohorts</p>
 <% end %>

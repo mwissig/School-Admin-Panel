@@ -56,8 +56,15 @@ end
   end
 
   def your
-    @cohort = Cohort.find_by(instructor_id: current_user[:id])
+    @yourcohorts = Cohort.where(instructor_id: current_user[:id])
     @students = Student.all.order(:last_name)
+    @courses = []
+    Course.all.each do |co|
+      arr = []
+      arr << co.name
+      arr << co.id
+      @courses << arr
+    end
   end
 
   def index

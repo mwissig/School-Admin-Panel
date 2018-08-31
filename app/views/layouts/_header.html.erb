@@ -1,5 +1,5 @@
 <header>
-<h2 class='logo'>The Nameofschool School</h2> Administrative Panel
+<h2 class='logo'>The Nameofschool School of Art and Technology</h2> Administrative Panel
 <% if logged_in? %>
 You are logged in as <%= current_user.full_name %>.
 Your role is:
@@ -12,16 +12,17 @@ President
 <% end %>
 <% end %>
 </header>
+
 <% if logged_in? %>
 <div id="hoverlogout">
   <%= link_to logout_path, method: :delete do %>
-  <i class="fas fa-sign-out-alt"></i>
+<h2>  <i class="fas fa-sign-out-alt"></i></h2>
   <% end %>
 </div>
   <% end %>
 
   <div id="hoverhome">
     <%= link_to root_path do %>
-<i class="fas fa-home"></i>
+<h2><i class="fas fa-home"></i></h2>
     <% end %>
   </div>

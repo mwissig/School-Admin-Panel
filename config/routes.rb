@@ -4,8 +4,18 @@ get 'login' => 'sessions#new'
 post 'login' => 'sessions#create'
 delete 'logout' => 'sessions#destroy'
 
+get 'register' => 'users#new'
+get 'login' => 'users#new'
+get 'admin' => 'users#admin'
+get 'instructors' => 'users#instructors'
+get 'admin' => 'users#admin'
+
+get 'courses' => 'courses#index'
+get 'students' => 'students#index'
+
   get 'cohorts/new'
-    get 'cohorts/your'
+  get 'cohorts/your'
+
   get 'cohorts/edit'
   get 'cohorts/show'
   get 'cohorts/index'
@@ -14,19 +24,14 @@ delete 'logout' => 'sessions#destroy'
   get 'courses/show'
   get 'courses/index'
   get 'pages/home'
-  get 'register' => 'users#new'
-  get 'login' => 'users#new'
-  get 'admin' => 'users#admin'
-  get 'instructors' => 'users#instructors'
-  get 'courses' => 'courses#index'
-  get 'students' => 'students#index'
+
 
   root 'pages#home'
 
   resources :students
   resources :users
   resources :courses
-    resources :cohorts
+  resources :cohorts
 
   get 'students/new'
   get 'students/edit'

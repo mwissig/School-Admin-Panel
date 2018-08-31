@@ -20,7 +20,7 @@ class StudentsController < ApplicationController
   def update
   if @student.update(student_params)
     p "student successfully updated"
-redirect_back(fallback_location: students_path)
+    redirect_back(fallback_location: students_path)
   else
     render 'edit'
   end
@@ -33,7 +33,7 @@ end
   end
 
   def index
-        @student = Student.new
+    @student = Student.new
     @students = Student.all.order(:last_name)
     @courses = Course.all
 

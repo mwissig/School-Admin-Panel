@@ -1,6 +1,35 @@
 <div class="frontpage">
   <div class="frontcontents">
-<h1 class="logo">The Nameofschool School</h1>
+<h1 class="logo">The Nameofschool School<br><small>of</small> Art and Technology</h1>
 <h2>Administrative Panel</h2>
+<h3>From this page you can:</h3>
+<% if logged_in? %>
+<p><%= button_to "Log out", logout_path, method: :delete %></p>
+<% if current_user.admin_priv >= 1 %>
+<p>View, edit, add, search for, or delete all faculty and staff</p>
+<p>View, edit, add, search for, or delete administrators</p>
+<p>View, edit, add, search for, or delete instructors</p>
+<p>View, edit, add, search for, or delete students</p>
+<p>View, edit, add, search for, or delete courses</p>
+<p>View, edit, add, search for, or delete cohorts</p>
+<% end %>
+  <% if current_user.admin_priv == 0 %>
+  <p>View and search for all faculty and staff</p>
+  <p>View and search for administrators</p>
+  <p>View and search for instructors</p>
+  <p>View and search for all students</p>
+  <p>View, add, and search for all courses</p>
+  <p>View, add, and search for all cohorts</p>
+    <p>View, edit, and delete your own cohorts and grade your students</p>
+  <% end %>
+<% else %>
+
+<%= form_for(:session, url: login_path) do |f| %>
+  <%= f.email_field :email, placeholder: 'Email', require: true %>
+  <%= f.password_field :password, placeholder: 'Password', require: true %>
+  <%= f.submit 'Log in' %>
+<% end %>
+<p>Not registered? <%= link_to 'Create an account', register_path %>.</p>
+<% end %>
 </div>
 </div>

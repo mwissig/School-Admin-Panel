@@ -1,25 +1,24 @@
 <h1>Instructors</h1>
-<div class="userGrid">
-<div>Last Name</div>
-<div>First Name</div>
-<div>Email</div>
-<div>Age</div>
-<div>Education</div>
-<div>Salary</div>
-<div>Role</div>
+
 <% @instructors.each do |u| %>
-<div><%= u.last_name %></div>
-<div><%= u.first_name %> </div>
-<div> <%= u.email %></div>
-<div> <%= u.age %></div>
-<div> <%= u.education %></div>
-<div> <%= u.salary %></div>
-<% if u.admin_priv == 0 %>
-<div>Instructor</div>
-<% elsif u.admin_priv == 1 %>
-<div>Administrator</div>
-<% elsif u.admin_priv == 2 %>
-<div>President</div>
+
+<%= form_for(u) do |f| %>
+<% if current_user.admin_priv == 0 %>
+
+<span><%= f.text_field :first_name, :readonly => true %>
+<%= f.text_field :last_name, :readonly => true  %>
+<%= f.text_field :email, :readonly => true  %></span><br>
+
+<% else %>
+<%= f.text_field :first_name %>
+<%= f.text_field :last_name %>
+<%= f.number_field :age %>
+<%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
+<%= f.text_field :email %>
+  <%= f.number_field :salary, :class => 'text_field', :step => 1000 %>
+Role:
+ <%= f.select :admin_priv, [['Instructor', 0],["Administrator", 1]] %>
+<%= f.submit 'Submit Changes' %>
 <% end %>
 <% end %>
-</div>
+<% end %>

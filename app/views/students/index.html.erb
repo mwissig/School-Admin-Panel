@@ -48,8 +48,9 @@ Cohort</span>
     <%= f.select :cohort_id,  @cohorts, class: 'cohortfield' %>
 <%= f.submit 'Submit Changes' %> <i class="fas fa-pencil-alt"></i>
 <% end %>
-<%= link_to "View Student Profile", student_path(s) %>
-<i class="far fa-eye"></i>
+<%= link_to student_path(s) do %>
+View Student Profile <i class="far fa-eye"></i>
+<% end %>
 </span>
 <% end %>
 

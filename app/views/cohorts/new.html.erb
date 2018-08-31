@@ -1,23 +1,21 @@
-
-
-
-<% @cohorts.each do |co| %>
-    <%= form_for co do |f| %>
+<h1>Create New Cohort</h1>
+<% if current_user.admin_priv == 0 %>
+<p>This form will assign you as the instructor for this cohort.</p>
+  <%= form_for @cohort do |f| %>
     <%= f.select :course_id, @courses %>
-    <%= f.text_field :name%>
-
-    <%= f.text_field :start_date %> to
-    <%= f.text_field :end_date %>
+    <%= f.text_field :name, placeholder: "Name"%>
+    <%= f.date_field :start_date %> to
+    <%= f.date_field :end_date %>
+    <%= f.hidden_field :instructor_id, value: current_user.id %>
+    <%= f.submit 'Create Cohort' %>
+    <% end %>
+  <% else %>
+  <%= form_for @cohort do |f| %>
+    <%= f.select :course_id, @courses %>
+    <%= f.text_field :name, placeholder: "Name"%>
+    <%= f.date_field :start_date %> to
+    <%= f.date_field :end_date %>
     <%= f.select :instructor_id, @instructors %>
-    <%= f.submit 'Edit Cohort' %>
+    <%= f.submit 'Create Cohort' %>
     <% end %>
-    <% end %>
-
-<%= form_for @cohort do |f| %>
-<%= f.select :course_id, @courses %>
-<%= f.text_field :name, placeholder: "Name"%>
-<%= f.date_field :start_date %> to
-<%= f.date_field :end_date %>
-<%= f.hidden_field :instructor_id, value: 0 %>
-<%= f.submit 'Create Cohort' %>
-<% end %>
+  <% end %>

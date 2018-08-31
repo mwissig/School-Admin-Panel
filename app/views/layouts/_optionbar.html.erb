@@ -1,13 +1,13 @@
+<% if logged_in? %>
+
 <div id="studentsNav" class="optionbar hidden">
   <%= link_to students_path, :alt => "View / Edit", :alt => "View / Edit" do %>
   <i class="far fa-eye"></i>/<i class="fas fa-pencil-alt"></i>
   <% end %>
    |
-   <%= link_to students_new_path, :alt => "New" do %>
-   <i class="fas fa-plus"></i>
-   <% end %>
+   <i class="fas fa-plus slider" onclick='revealNewStudent()'></i>
     |
-    <i class="fas fa-search" onclick='revealSearchOptionsStudent()'></i>
+    <i class="fas fa-search slider" onclick='revealSearchOptionsStudent()'></i>
      |
      <i class="fas fa-times slider" alt="Close" onclick="closeStudents()"></i>
 </div>
@@ -17,10 +17,14 @@
   <i class="far fa-eye"></i>/<i class="fas fa-pencil-alt"></i>
   <% end %>
    |
-   <%= link_to cohorts_new_path, :alt => "New" do %>
-   <i class="fas fa-plus"></i>
-   <% end %>
+   <i class="fas fa-plus slider" onclick='revealNewCohort()'></i>
     |
+<% if current_user.admin_priv == 0 %>
+   <%= link_to cohorts_your_path, :alt => "Your Cohorts" do %>
+    <i class="fas fa-user"></i>
+    <% end %>
+        |
+        <% end %>
     <i class="fas fa-search"></i>
     |
     <i class="fas fa-times slider" alt="Close" onclick="closeCohorts()"></i>
@@ -31,9 +35,7 @@
   <i class="far fa-eye"></i>/<i class="fas fa-pencil-alt"></i>
   <% end %>
    |
-   <%= link_to courses_new_path, :alt => "New" do %>
-   <i class="fas fa-plus"></i>
-   <% end %>
+   <i class="fas fa-plus slider" onclick='revealNewCourse()'></i>
     |
     <i class="fas fa-search"></i>
     |
@@ -50,3 +52,4 @@
     INSTRUCTOR<br>
     <i class="fas fa-times slider" alt="Close" onclick ="closeSearchOptionsStudent()"></i>
 </div>
+<% end %>

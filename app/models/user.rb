@@ -7,7 +7,6 @@ class User < ApplicationRecord
     self.salary ||= 36000
   end
   before_save { self.email = email.downcase }
-  has_many :cohorts
   has_secure_password
   validates :password, presence: true, length: { maximum: 32, minimum: 8 }
   validates :email, presence: true, length: { maximum: 100 }

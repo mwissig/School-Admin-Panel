@@ -30,6 +30,18 @@ h1 {
   background-color: rgb(155, 155, 181);
   width: 100%;
   text-align: center;
+  font-weight: normal;
+}
+
+h2 {
+  text-align: center;
+  margin: 1px;
+  font-weight: normal;
+}
+
+.desc {
+  text-align: center;
+  margin: 1px;
 }
 
 #hoverlogout {
@@ -37,6 +49,7 @@ h1 {
   top: 10px;
   right: 10px;
 }
+
 #hoverhome {
   position: absolute;
   top: 10px;
@@ -47,6 +60,7 @@ h1 {
 .logo {
   font-family: 'Cinzel Decorative', cursive;
   margin: 0;
+  font-weight: bold;
 }
 
 a {
@@ -93,11 +107,13 @@ form input:hover {
 form:nth-child(even) {
   background-color: #eeeeee;
   border-bottom: 1px solid gray;
+  padding: 0 5px;
 }
 
 form:nth-child(odd) {
   background-color: #FFF;
   border-bottom: 1px solid gray;
+  padding: 0 5px;
 }
 
 button {
@@ -155,6 +171,7 @@ header {
   position: absolute;
   margin-top: 0;
   text-align: center;
+  left: 80px;
 }
 
 .sidebar ul li {
@@ -177,9 +194,18 @@ header {
 .frontcontents {
   text-align: center;
 }
-
+.frontcontents form {
+  background-color: transparent;
+  border: none;
+}
+.frontcontents form input {
+  border-radius: 3px;
+  padding: 3px 8px;
+  background-color: white;
+  border: 1px solid gray;
+}
 .optionbar {
-      width: 140px;
+  width: 140px;
   position: absolute;
   background-color: rgb(137, 143, 181);
   left: 0px;
@@ -188,6 +214,45 @@ header {
   transition-duration: 0.6s;
   z-index: 3;
   border-top-right-radius: 5px;
+  text-align: right;
+}
+
+.creator {
+  width: 300px;
+  height: 10px;
+  position: fixed;
+  background-color: rgb(137, 143, 181);
+  left: 150px;
+  padding: 5px;
+  transition-property: left;
+  transition-duration: 0.6s;
+  z-index: 3;
+  border-top-right-radius: 5px;
+  z-index: 1;
+}
+.creator form {
+  background: transparent;
+}
+.creator form input {
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+.creator form select {
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+#newStudentBar {
+  top: 190px;
+}
+
+#newCourseBar {
+  top: 155px;
+}
+
+#newCohortBar {
+  top: 175px;
 }
 
 .hidden {
@@ -212,12 +277,11 @@ header {
 
 .searchoptions {
   position: absolute;
-  text-align: right;
   background-color: rgb(137, 143, 181);
   left: 150px;
   padding: 5px;
-    top: 170px;
-    width: 140px;
+  top: 170px;
+  width: 140px;
   height: 10px;
   overflow: hidden;
   transition-property: height;
@@ -225,9 +289,15 @@ header {
   z-index: 2;
   border-bottom-right-radius: 5px;
 }
+
 #studentsSearchBar {
   top: 170px;
 }
+
 .searchoptionsreveal {
+  height: auto;
+}
+
+.creatorreveal {
   height: auto;
 }

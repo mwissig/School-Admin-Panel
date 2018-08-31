@@ -1,14 +1,13 @@
 class CoursesController < ApplicationController
+      before_action :find_course, only: [:show, :edit, :update]
   def new
     @course = Course.new
-
   end
 
   def create
-
     @course = Course.new(course_params)
     if @course.save
-      redirect_to @course
+      redirect_to courses_path
     else
       render 'new'
     end
@@ -18,13 +17,21 @@ class CoursesController < ApplicationController
 
   end
 
-  def show
+  def update
+  if @course.update(course_params)
+    p "course successfully updated"
+    redirect_back(fallback_location: courses_path)
+  else
+    render 'edit'
+  end
+end
 
+  def show
     @course = Course.find(params[:id])
   end
 
   def index
-            @courses = Course.all
+      @courses = Course.all
   end
 
   private
@@ -32,4 +39,8 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course).permit(:name, :hours)
     end
+
+    def find_course
+     @course = Course.find(params[:id])
+ end
 end
