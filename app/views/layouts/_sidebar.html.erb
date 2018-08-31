@@ -1,14 +1,15 @@
-<div class="sidebar"><ul>
-<% if logged_in? %>
-<li><%= link_to "Log out", logout_path, method: :delete %></li>
-<li><%= link_to "Administrators", admin_path %></li>
-<li><%= link_to "Instructors", instructors_path %></li>
-<li class="slider" onclick='slideoutCourses()'>Courses</li>
-<li class="slider" onclick='slideoutCohorts()'>Cohorts</li>
-<li class="slider" onclick='slideoutStudents()'>Students</li>
-<% else %>
-<li><%= link_to "Create an account", register_path %></li>
-<li><%= link_to "Log in", login_path %></li>
-<% end %>
-</ul>
+<div class="sidebar">
+  <ul>
+    <% if logged_in? %>
+      <li><%= link_to "Log out", logout_path, method: :delete %></li>
+      <li><%= link_to "Administrators", admin_path %></li>
+      <li><%= link_to "Instructors", instructors_path %></li>
+      <li class="slider" onclick='slideoutCourses()'>Courses</li>
+      <li class="slider" onclick='slideoutCohorts()'>Cohorts</li>
+      <li class="slider" onclick='slideoutStudents()'>Students</li>
+    <% else %>
+      <li><%= link_to "Create an account", register_path %></li>
+      <li><%= link_to "Log in", login_path %></li>
+    <% end %>
+  </ul>
 </div>

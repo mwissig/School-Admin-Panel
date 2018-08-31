@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-      before_action :find_course, only: [:show, :edit, :update]
+  before_action :find_course, only: %i[show edit update]
   def new
     @course = Course.new
   end
@@ -13,25 +13,24 @@ class CoursesController < ApplicationController
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
-  if @course.update(course_params)
-    p "course successfully updated"
-    redirect_back(fallback_location: courses_path)
-  else
-    render 'edit'
-  end
+    if @course.update(course_params)
+      p 'course successfully updated'
+      redirect_back(fallback_location: courses_path)
+    else
+      render 'edit'
+    end
 end
 
   def show
     @course = Course.find(params[:id])
+    @coursecohorts = Cohort.where(course_id: @course.id)
   end
 
   def index
-      @courses = Course.all
+    @courses = Course.all
   end
 
   private
@@ -40,7 +39,7 @@ end
     params.require(:course).permit(:name, :hours)
     end
 
-    def find_course
-     @course = Course.find(params[:id])
+  def find_course
+    @course = Course.find(params[:id])
  end
 end

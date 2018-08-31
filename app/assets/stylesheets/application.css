@@ -51,7 +51,7 @@ h2 {
 }
 
 #hoverhome {
-  position: absolute;
+  position: fixed;
   top: 10px;
   left: 10px;
   z-index: 10;
@@ -91,7 +91,9 @@ form input {
 .emailfield {
   width: 180px;
 }
-
+.salary {
+  width: 60px !important;
+}
 .namefield {
   width: 80px;
 }
@@ -206,7 +208,7 @@ header {
 }
 .optionbar {
   width: 140px;
-  position: absolute;
+  position: fixed;
   background-color: rgb(137, 143, 181);
   left: 0px;
   padding: 5px;
@@ -276,7 +278,7 @@ header {
 }
 
 .searchoptions {
-  position: absolute;
+  position: fixed;
   background-color: rgb(137, 143, 181);
   left: 150px;
   padding: 5px;

@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-    before_action :find_student, only: [:show, :edit, :update]
+  before_action :find_student, only: %i[show edit update]
   def new
     @student = Student.new
   end
@@ -13,17 +13,15 @@ class StudentsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
-  if @student.update(student_params)
-    p "student successfully updated"
-    redirect_back(fallback_location: students_path)
-  else
-    render 'edit'
-  end
+    if @student.update(student_params)
+      p 'student successfully updated'
+      redirect_back(fallback_location: students_path)
+    else
+      render 'edit'
+    end
 end
 
   def show
@@ -36,8 +34,7 @@ end
     @student = Student.new
     @students = Student.all.order(:last_name)
     @courses = Course.all
-
-  end
+    end
 
   private
 
@@ -45,7 +42,7 @@ end
     params.require(:student).permit(:first_name, :last_name, :email, :grade, :age, :education, :course_id, :cohort_id)
     end
 
-    def find_student
-     @student = Student.find(params[:id])
+  def find_student
+    @student = Student.find(params[:id])
  end
 end

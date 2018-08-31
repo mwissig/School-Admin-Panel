@@ -3,7 +3,8 @@
 <%= form_for c do |f| %>
   <%= f.text_field :name, placeholder: "Course Name", required: true %> Hours:
   <%= f.number_field :hours, placeholder: 0, :class => 'text_field', :step => 10, required: true %>
-  <%= f.submit 'Edit Course' %>
+  <%= link_to "View Course Info", course_path(c) %>
+  <%= f.submit 'Submit Changes' %>
   <% end %>
 
 <% end %>

@@ -1,59 +1,61 @@
 <% if logged_in? %>
 
-<div id="newStudentBar" class="creator hidden">
+  <div id="newStudentBar" class="creator hidden">
     <b>Add new student</b>
-  <%= form_for(@student) do |f| %>
-  <% @courses = [] %>
-  <% Course.all.each do |co| %>
-  <% arr = [] %>
-  <% arr << co.name %>
-  <% arr << co.id %>
-  <% @courses << arr %>
+    <%= form_for(@student) do |f| %>
+    <% @courses = [] %>
+      <% Course.all.each do |co| %>
+        <% arr = [] %>
+          <% arr << co.name %>
+            <% arr << co.id %>
+              <% @courses << arr %><% end %>
+              <%= f.text_field :first_name, placeholder: "First Name" %><br>
+              <%= f.text_field :last_name, placeholder: "Last Name"%><br>
+              <%= f.text_field :email, placeholder: "Email Address" %><br>
+              <%= f.number_field :age, placeholder: "Age" %><br>
+              <%= f.hidden_field :grade, value: 0.00, :class => 'text_field', :step => 0.01 %>
+              <%= f.hidden_field :cohort_id, value: 0 %>
+              Education:
+              <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %><br>
+              Course:
+              <%= f.select :course_id, @courses %><br>
+              <%= f.submit 'Add Student' %>
+            <% end %>
+
+          </div>
+
+          <div id="newCourseBar" class="creator hidden">
+            <%= form_for @course do |f| %>
+            <%= f.text_field :name, placeholder: "Course Name", required: true %>
+            Hours:
+            <%= f.number_field :hours, placeholder: 0, :class => 'text_field', :step => 10, required: true %>
+            <%= f.submit 'Create Course' %>
+          <% end %>
+        </div>
+
+        <div id="newCohortBar" class="creator hidden">
+          <% if current_user.admin_priv == 0 %>
+            <p>This form will assign you as the instructor for this cohort.</p>
+            <%= form_for @newcohort do |f| %>
+            <%= f.select :course_id, @courses %>
+            <%= f.text_field :name, placeholder: "Name"%>
+            <%= f.date_field :start_date %>
+            to
+            <%= f.date_field :end_date %>
+            <%= f.hidden_field :instructor_id, value: current_user.id %>
+            <%= f.submit 'Create Cohort' %>
+          <% end %>
+        <% else %>
+          <%= form_for @newcohort do |f| %>
+          <%= f.select :course_id, @courses %>
+          <%= f.text_field :name, placeholder: "Name"%>
+          <%= f.date_field :start_date %>
+          to
+          <%= f.date_field :end_date %>
+          <%= f.select :instructor_id, @instructorsarray %>
+          <%= f.submit 'Create Cohort' %>
+        <% end %>
+      <% end %>
+    </div>
+
   <% end %>
-<%= f.text_field :first_name, placeholder: "First Name" %><br>
-    <%= f.text_field :last_name, placeholder: "Last Name"%><br>
-   <%= f.text_field :email, placeholder: "Email Address" %><br>
-   <%= f.number_field :age, placeholder: "Age" %><br>
-<%= f.hidden_field :grade, value: 0.00, :class => 'text_field', :step => 0.01 %>
-    <%= f.hidden_field :cohort_id, value: 0 %>
-   Education: <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %><br>
-     Course: <%= f.select :course_id, @courses %><br>
-  <%= f.submit 'Add Student' %>
-  <% end %>
-
-</div>
-
-
-<div id="newCourseBar" class="creator hidden">
-  <%= form_for @course do |f| %>
-    <%= f.text_field :name, placeholder: "Course Name", required: true %> Hours:
-    <%= f.number_field :hours, placeholder: 0, :class => 'text_field', :step => 10, required: true %>
-    <%= f.submit 'Create Course' %>
-    <% end %>
-</div>
-
-<div id="newCohortBar" class="creator hidden">
-<% if current_user.admin_priv == 0 %>
-<p>This form will assign you as the instructor for this cohort.</p>
-  <%= form_for @newcohort do |f| %>
-    <%= f.select :course_id, @courses %>
-    <%= f.text_field :name, placeholder: "Name"%>
-    <%= f.date_field :start_date %> to
-    <%= f.date_field :end_date %>
-    <%= f.hidden_field :instructor_id, value: current_user.id %>
-    <%= f.submit 'Create Cohort' %>
-    <% end %>
-  <% else %>
-  <%= form_for @newcohort do |f| %>
-    <%= f.select :course_id, @courses %>
-    <%= f.text_field :name, placeholder: "Name"%>
-    <%= f.date_field :start_date %> to
-    <%= f.date_field :end_date %>
-    <%= f.select :instructor_id, @instructorsarray %>
-    <%= f.submit 'Create Cohort' %>
-    <% end %>
-  <% end %>
-</div>
-
-
-<% end %>
