@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :get_all_new
   def get_all_new
+    @schoolname = Faker::StarWars.specie
     @course = Course.new
     @newcohort = Cohort.new
     @user = User.new
