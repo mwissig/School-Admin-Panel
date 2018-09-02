@@ -7,8 +7,10 @@
   <p>
     <% @instructor = User.find_by(id: @cohort.instructor_id) %>
         <p>Taught by
+          <% if @instructor != nil %>
           <%= @instructor.first_name %>
           <%= @instructor.last_name %>
+          <% end %>
           <p>Students in This Cohort</p>
           <% @students.each do |s| %>
             <% if s.cohort_id == @cohort.id %>
