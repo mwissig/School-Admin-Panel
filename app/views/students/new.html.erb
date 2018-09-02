@@ -9,13 +9,13 @@
 <% end %>
 <span>
 Add new student
-<%= f.text_field :last_name, placeholder: "Last Name"%>
-<%= f.text_field :first_name, placeholder: "First Name" %>
- <%= f.text_field :email, placeholder: "Email Address" %>
- <%= f.number_field :age, placeholder: "Age" %>
+<%= f.text_field :last_name, placeholder: "Last Name", required: true  %>
+<%= f.text_field :first_name, placeholder: "First Name", required: true   %>
+ <%= f.text_field :email, placeholder: "Email Address", required: true   %>
+ <%= f.number_field :age, placeholder: "Age", required: true   %>
  <%= f.hidden_field :grade, value: 0.00, :class => 'text_field', :step => 0.01 %>
   <%= f.hidden_field :cohort_id, value: 0 %>
- <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
+ <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'], required: true   %>
    <%= f.select :course_id, @courses %>
 <%= f.submit 'Add Student' %>
 <% end %>

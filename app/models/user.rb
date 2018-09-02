@@ -1,18 +1,19 @@
 class User < ApplicationRecord
   has_many :cohorts
   before_save :default_values
-
+  before_save { self.email = email.downcase }
+  before_save { self.age = age.to_i }
   def default_values
     self.admin_priv ||= 0
     self.salary ||= 36_000
   end
   before_save { self.email = email.downcase }
   has_secure_password
-  validates :password, presence: true, length: { maximum: 32, minimum: 8 }
+  validates :password, presence: true, length: { maximum: 32, minimum: 6 }
   validates :email, presence: true, length: { maximum: 100 }
   validates :age, numericality: { less_than_or_equal_to: 150, only_integer: true }
   def full_name
-    first_name + ' ' + last_name
+    self.first_name + " " + self.last_name
   end
 
   def self.digest(string)
