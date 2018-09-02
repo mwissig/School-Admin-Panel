@@ -1,10 +1,11 @@
 <% if logged_in? %>
 <h1><%= @cohort.name %></h1>
 
-<p>Date:
+<p>Date: <%= if @cohort.start_date != nil %>
   <%= @cohort.start_date.to_datetime.strftime("%m/%e/%y") %>
   to
   <%= @cohort.end_date.to_datetime.strftime("%m/%e/%y") %>
+  <% end %>
   <p>
     <% @instructor = User.find_by(id: @cohort.instructor_id) %>
         <p>Taught by
