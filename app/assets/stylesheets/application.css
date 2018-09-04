@@ -26,17 +26,23 @@ body {
   min-height: 100%;
 }
 
-h1 {
+h1, .container h2, .container h3 {
   background-color: rgb(155, 155, 181);
   width: 100%;
   text-align: center;
   font-weight: normal;
+    margin: 0;
+    padding: 2px;
+}
+p {
+  text-align: center;
+}
+.container h2 {
+  background-color: rgb(175, 175, 199);
 }
 
-h2 {
-  text-align: center;
-  margin: 1px;
-  font-weight: normal;
+.container h3 {
+  background-color: rgb(193, 193, 214);
 }
 
 .desc {

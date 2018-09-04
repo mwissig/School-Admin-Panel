@@ -1,21 +1,20 @@
 <% if logged_in? %>
   <h1><%= @cohort.name %></h1>
   <% if @cohort.start_date.to_datetime != nil %>
-    <p>Date:
+    <h2>Date:
       <%= @cohort.start_date.to_datetime.strftime("%m/%e/%y") %>
       to
-      <%= @cohort.end_date.to_datetime.strftime("%m/%e/%y") %></p>
+      <%= @cohort.end_date.to_datetime.strftime("%m/%e/%y") %></h2>
   <% end %>
-  <p>
     <% @instructor = User.find_by(id: @cohort.instructor_id) %>
-      <p>
+      <h3>
         <% if @instructor != nil %>
           Taught by
           <%= @instructor.first_name %>
           <%= @instructor.last_name %>
         <% else %>
           No instructor selected.
-        <% end %>
+        <% end %></h3>
         <p>Students in This Cohort</p>
         <% @students.each do |s| %>
           <% if s.cohort_id == @cohort.id %>
@@ -36,7 +35,9 @@
                             <% arr << co.name %>
                               <% arr << co.id %>
                                 <% @courses << arr %><% end %>
-                                <span>
+                                <span>  <%= link_to student_path(s) do %>
+                                  <i class="far fa-eye"></i>
+                                  <% end %>
                                   <% if s.id < 100 && s.id > 9 %>
                                     <%= "0" + s.id.to_s %>
                                     <% elsif s.id < 10 %>
@@ -52,10 +53,10 @@
                                     <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
                                     <%= f.select :course_id, @courses %>
                                     <%= f.select :cohort_id, @cohorts, class: 'cohortfield' %>
-                                    <%= link_to "View Student Profile", student_path(s) %>
-                                    <i class="far fa-eye"></i>
-                                    <%= f.submit 'Submit Changes' %>
-                                    <i class="fas fa-pencil-alt"></i>
+
+                                    <%= button_tag( :class => "button") do %>
+<i class="fas fa-pencil-alt"></i>
+<% end %>
 
                                   <% end %>
 
@@ -83,7 +84,9 @@
                                                     <% arr << co.name %>
                                                       <% arr << co.id %>
                                                         <% @courses << arr %><% end %>
-                                                        <span>
+                                                        <span>  <%= link_to student_path(s) do %>
+                                                          <i class="far fa-eye"></i>
+                                                          <% end %>
                                                           <% if s.id < 100 && s.id > 9 %>
                                                             <%= "0" + s.id.to_s %>
                                                             <% elsif s.id < 10 %>
@@ -99,10 +102,10 @@
                                                             <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
                                                             <%= f.select :course_id, @courses %>
                                                             <%= f.select :cohort_id, @cohorts, class: 'cohortfield' %>
-                                                            <%= link_to "View Student Profile", student_path(s) %>
-                                                            <i class="far fa-eye"></i>
-                                                            <%= f.submit 'Submit Changes' %>
-                                                            <i class="fas fa-pencil-alt"></i>
+
+                                                            <%= button_tag( :class => "button") do %>
+  <i class="fas fa-pencil-alt"></i>
+<% end %>
 
                                                           <% end %>
 
