@@ -6,106 +6,25 @@
       to
       <%= @cohort.end_date.to_datetime.strftime("%m/%e/%y") %></h2>
   <% end %>
-      <h3>
-        <% if @cohort.user != nil %>
-          Taught by
-          <%= @cohort.user.full_name %>
-        <% else %>
-          No instructor selected.
-        <% end %></h3>
-        <p>Students in This Cohort</p>
-        <% @cohort.students.each do |s| %>
-            <%= form_for(s) do |f| %>
+  <h3>
+    <% if @cohort.user != nil %>
+      Taught by
+      <%= @cohort.user.full_name %>
+    <% else %>
+      No instructor selected.
+    <% end %>
+  </h3>
+  <p>Students in This Cohort</p>
 
-            <% @cohorts = [["No Cohort Assigned", 0]] %>
-              <% Cohort.all.each do |coh| %>
-                <% if coh.course_id == s.course_id %>
-                  <% arr = [] %>
-                    <% arr << coh.name %>
-                      <% arr << coh.id %>
-                        <% @cohorts << arr %><% end %>
-                      <% end %>
+  <% @students = @cohort.students %>
+    <%= render "students/studentsform" %>
 
-                      <% @courses = [] %>
-                        <% Course.all.each do |co| %>
-                          <% arr = [] %>
-                            <% arr << co.name %>
-                              <% arr << co.id %>
-                                <% @courses << arr %><% end %>
-                                <span>  <%= link_to student_path(s) do %>
-                                  <i class="far fa-eye"></i>
-                                  <% end %>
-                                  <% if s.id < 100 && s.id > 9 %>
-                                    <%= "0" + s.id.to_s %>
-                                    <% elsif s.id < 10 %>
-                                      <%= "00" + s.id.to_s %>
-                                    <% else %>
-                                      <%= s.id.to_s %>
-                                    <% end %>
-                                    <%= f.text_field :last_name, class: 'namefield' %>
-                                    <%= f.text_field :first_name, class: 'namefield' %>
-                                    <%= f.text_field :email, class: 'emailfield' %>
-                                    <%= f.number_field :age %>
-                                    <%= f.number_field :grade, :class => 'text_field', :step => 0.01 %>
-                                    <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
-                                    <%= f.select :course_id, @courses %>
-                                    <%= f.select :cohort_id, @cohorts, class: 'cohortfield' %>
-
-                                    <%= button_tag( :class => "button") do %>
-<i class="fas fa-pencil-alt"></i>
-<% end %>
-
-                                  <% end %>
-
-                                </span>
-                            <% end %>
-
-                            <p>Students Taking this Course Not Yet Assigned a Cohort<p>
-                                <% @students.each do |s| %>
-                                  <% if s.course_id == @cohort.course_id && s.cohort_id == 0 %>
-                                    <%= form_for(s) do |f| %>
-
-                                    <% @cohorts = [["No Cohort Assigned", 0]] %>
-                                      <% Cohort.all.each do |coh| %>
-                                        <% if coh.course_id == s.course_id %>
-                                          <% arr = [] %>
-                                            <% arr << coh.name %>
-                                              <% arr << coh.id %>
-                                                <% @cohorts << arr %><% end %>
-                                              <% end %>
-
-                                              <% @courses = [] %>
-                                                <% Course.all.each do |co| %>
-                                                  <% arr = [] %>
-                                                    <% arr << co.name %>
-                                                      <% arr << co.id %>
-                                                        <% @courses << arr %><% end %>
-                                                        <span>  <%= link_to student_path(s) do %>
-                                                          <i class="far fa-eye"></i>
-                                                          <% end %>
-                                                          <% if s.id < 100 && s.id > 9 %>
-                                                            <%= "0" + s.id.to_s %>
-                                                            <% elsif s.id < 10 %>
-                                                              <%= "00" + s.id.to_s %>
-                                                            <% else %>
-                                                              <%= s.id.to_s %>
-                                                            <% end %>
-                                                            <%= f.text_field :last_name, class: 'namefield' %>
-                                                            <%= f.text_field :first_name, class: 'namefield' %>
-                                                            <%= f.text_field :email, class: 'emailfield' %>
-                                                            <%= f.number_field :age %>
-                                                            <%= f.number_field :grade, :class => 'text_field', :step => 0.01 %>
-                                                            <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
-                                                            <%= f.select :course_id, @courses %>
-                                                            <%= f.select :cohort_id, @cohorts, class: 'cohortfield' %>
-
-                                                            <%= button_tag( :class => "button") do %>
-  <i class="fas fa-pencil-alt"></i>
-<% end %>
-
-                                                          <% end %>
-
-                                                        </span>
-                                                      <% end %>
-                                                    <% end %>
-                                                  <% end %>
+    <p>Students Taking this Course Not Yet Assigned a Cohort<p>
+        <% @students = [] %>
+          <% Student.all.each do |s| %>
+            <% if s.course_id == @cohort.course_id && s.cohort_id == 0 %>
+              <% @students << s %>
+            <% end %>
+          <% end %>
+          <%= render "students/studentsform" %>
+        <% end %>

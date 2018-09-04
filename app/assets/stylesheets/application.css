@@ -70,7 +70,9 @@ p {
   margin: 0;
   font-weight: bold;
 }
-
+form {
+  text-align: center;
+}
 a {
   text-decoration: none;
   color: black;
@@ -95,7 +97,9 @@ form input {
   border: none;
   background-color: transparent;
 }
-
+.datefield {
+  width: 80px;
+}
 .emailfield {
   width: 180px;
 }

@@ -20,7 +20,7 @@ class StudentsController < ApplicationController
       p 'student successfully updated'
       redirect_back(fallback_location: students_path)
     else
-      render 'edit'
+      render 'index'
     end
 end
 

@@ -22,8 +22,8 @@
       <%= f.select :course_id, @courses %>
       <%= f.text_field :name%>
 
-      <%= f.text_field :start_date %> to
-      <%= f.text_field :end_date %>
+      <%= f.text_field :start_date, class: 'datefield' %> to
+      <%= f.text_field :end_date, class: 'datefield' %>
       <%= f.submit 'Edit Cohort' %>
          <%= @num_stu %> students:
       <% end %>

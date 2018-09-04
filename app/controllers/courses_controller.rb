@@ -1,5 +1,4 @@
 class CoursesController < ApplicationController
-  has_many :students
   before_action :find_course, only: %i[show edit update]
   def new
     @course = Course.new
@@ -21,7 +20,7 @@ class CoursesController < ApplicationController
       p 'course successfully updated'
       redirect_back(fallback_location: courses_path)
     else
-      render 'edit'
+      render 'index'
     end
 end
 

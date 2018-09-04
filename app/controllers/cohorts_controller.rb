@@ -40,7 +40,7 @@ class CohortsController < ApplicationController
       p 'cohort successfully updated'
       redirect_to @cohort
     else
-      render 'edit'
+      render 'index'
     end
 end
 
