@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  has_many :students
   before_action :find_course, only: %i[show edit update]
   def new
     @course = Course.new
@@ -26,7 +27,6 @@ end
 
   def show
     @course = Course.find(params[:id])
-    @coursecohorts = Cohort.where(course_id: @course.id)
   end
 
   def index

@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_28_014925) do
+ActiveRecord::Schema.define(version: 2018_09_04_181548) do
 
   create_table "cohorts", force: :cascade do |t|
     t.string "name"
-    t.integer "instructor_id"
+    t.integer "user_id"
     t.string "start_date"
     t.string "end_date"
     t.integer "course_id"

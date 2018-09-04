@@ -7,7 +7,7 @@
     <%= f.text_field :name, placeholder: "Name", required: true  %>
     <%= f.date_field :start_date, required: true   %> to
     <%= f.date_field :end_date, required: true   %>
-    <%= f.hidden_field :instructor_id, value: current_user.id  %>
+    <%= f.hidden_field :user_id, value: current_user.id  %>
     <%= f.submit 'Create Cohort' %>
     <% end %>
   <% else %>
@@ -16,7 +16,7 @@
     <%= f.text_field :name, placeholder: "Name", required: true  %>
     <%= f.date_field :start_date, required: true   %> to
     <%= f.date_field :end_date, required: true   %>
-    <%= f.select :instructor_id, @instructors %>
+    <%= f.select :user_id, @instructors %>
     <%= f.submit 'Create Cohort' %>
     <% end %>
   <% end %>

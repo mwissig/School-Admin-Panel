@@ -50,7 +50,7 @@ end
   end
 
   def your
-    @yourcohorts = Cohort.where(instructor_id: current_user[:id])
+    @yourcohorts = Cohort.where(user_id: current_user[:id])
     @students = Student.all.order(:last_name)
     @courses = []
     Course.all.each do |co|
@@ -90,7 +90,7 @@ end
   private
 
   def cohort_params
-    params.require(:cohort).permit(:name, :instructor_id, :start_date, :end_date, :course_id)
+    params.require(:cohort).permit(:name, :user_id, :start_date, :end_date, :course_id)
     end
 
   def find_cohort

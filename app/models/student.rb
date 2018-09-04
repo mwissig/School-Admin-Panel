@@ -1,4 +1,6 @@
 class Student < ApplicationRecord
+  belongs_to :cohort
+  belongs_to :course
   before_save { self.email = email.downcase }
   before_save { self.age = age.to_i }
   before_save { self.grade = grade.to_f }
