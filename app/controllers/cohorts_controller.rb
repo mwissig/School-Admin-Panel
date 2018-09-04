@@ -29,6 +29,8 @@ class CohortsController < ApplicationController
     if @cohort.save
       redirect_to @cohort
     else
+      msg = @cohort.errors.full_messages
+flash.now[:error] = msg
       render 'new'
     end
   end
@@ -40,6 +42,8 @@ class CohortsController < ApplicationController
       p 'cohort successfully updated'
       redirect_to @cohort
     else
+      msg = @cohort.errors.full_messages
+flash.now[:error] = msg
       render 'index'
     end
 end

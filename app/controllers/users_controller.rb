@@ -10,6 +10,8 @@ class UsersController < ApplicationController
       redirect_to login_path
     else
       render 'new'
+      msg = @user.errors.full_messages
+flash.now[:error] = msg
     end
   end
 
@@ -20,7 +22,8 @@ class UsersController < ApplicationController
       p 'user successfully updated'
       redirect_back(fallback_location: users_path)
     else
-      p 'update failed'
+      msg = @user.errors.full_messages
+flash.now[:error] = msg
       redirect_back(fallback_location: users_path)
     end
 end

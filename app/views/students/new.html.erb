@@ -16,7 +16,7 @@ Add new student
  <%= f.hidden_field :grade, value: 0.00, :class => 'text_field', :step => 0.01 %>
   <%= f.hidden_field :cohort_id, value: 0 %>
  <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'], required: true   %>
-   <%= f.select :course_id, @courses %>
+   <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'} %>
 <%= f.submit 'Add Student' %>
 <% end %>
 </span>

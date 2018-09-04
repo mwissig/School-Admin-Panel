@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
 
     @users.each do |u|
       next unless u.admin_priv == 0
-      p u.first_name
       arr = []
       arr << u.last_name + ', ' + u.first_name
       arr << u.id

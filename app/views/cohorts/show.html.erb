@@ -15,7 +15,7 @@
     <% end %>
   </h3>
   <p>Students in This Cohort</p>
-
+<div class="titlespans"><span style="margin-right:10px;">ID#</span><span style="margin-right:20px;">Last Name</span><span style="margin-right:20px;">First Name</span><span style="margin-right:145px;">Email </span><span style="margin-right:25px;">Age</span><span style="margin-right:30px;">GPA</span><span style="margin-right:10px;">Education</span><span style="margin-right:145px;">Course</span><span>Cohort</span></div>
   <% @students = @cohort.students %>
     <%= render "students/studentsform" %>
 

@@ -3,10 +3,15 @@
 <h1>Courses</h1>
 <% @courses.each do |c| %>
 <%= form_for c do |f| %>
+<%= link_to course_path(c) do %>
+<i class="far fa-eye"></i> <%= c.cohorts.length %> cohorts, <%= c.students.length %> students.
+<% end %> Course title:
   <%= f.text_field :name, placeholder: "Course Name", required: true %> Hours:
   <%= f.number_field :hours, placeholder: 0, :class => 'text_field', :step => 10, required: true %>
-  <%= link_to "View Course Info", course_path(c) %>
-  <%= f.submit 'Submit Changes' %>
+
+  <%= button_tag( :class => "button") do %>
+  <i class="fas fa-pencil-alt"></i>
+<% end %>
   <% end %>
 
 <% end %>

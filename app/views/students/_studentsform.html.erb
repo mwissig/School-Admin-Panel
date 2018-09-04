@@ -33,22 +33,22 @@
                         <%= f.number_field :age %>
                         <%= f.number_field :grade, :class => 'text_field', :step => 0.01 %>
                         <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
-                        <%= f.select :course_id, @courses %>
+                        <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'} %>
                         <% if s.course_id > 0 %>
                           <%= link_to course_path(s.course) do %>
-                          <i class="far fa-eye"></i>
+                          <i class="fas fa-arrow-left"></i> <i class="far fa-eye"></i>
                         <% end %>
                       <% else %>
-                        <i class="far fa-eye-slash" style="color:gray"></i>
+                        <i class="fas fa-arrow-left" style="color:gray"></i> <i class="far fa-eye-slash" style="color:gray"></i>
                       <% end %>
 
                       <%= f.select :cohort_id, @cohorts, class: 'cohortfield' %>
                       <% if s.cohort_id > 0 %>
                         <%= link_to cohort_path(s.cohort) do %>
-                        <i class="far fa-eye"></i>
+                      <i class="fas fa-arrow-left"></i> <i class="far fa-eye"></i>
                       <% end %>
                     <% else %>
-                      <i class="far fa-eye-slash" style="color:gray"></i>
+                      <i class="fas fa-arrow-left" style="color:gray"></i> <i class="far fa-eye-slash" style="color:gray"></i>
                     <% end %>
                     <%= button_tag( :class => "button") do %>
                     <i class="fas fa-pencil-alt"></i>

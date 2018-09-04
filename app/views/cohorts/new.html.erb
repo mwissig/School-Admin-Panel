@@ -3,7 +3,7 @@
 <% if current_user.admin_priv == 0 %>
 <p>This form will assign you as the instructor for this cohort.</p>
   <%= form_for @cohort do |f| %>
-    <%= f.select :course_id, @courses, required: true   %>
+    <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'}, required: true %>
     <%= f.text_field :name, placeholder: "Name", required: true  %>
     <%= f.date_field :start_date, required: true   %> to
     <%= f.date_field :end_date, required: true   %>
@@ -12,11 +12,11 @@
     <% end %>
   <% else %>
   <%= form_for @cohort do |f| %>
-    <%= f.select :course_id, @courses, required: true   %>
+    <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'}, required: true %>
     <%= f.text_field :name, placeholder: "Name", required: true  %>
     <%= f.date_field :start_date, required: true   %> to
     <%= f.date_field :end_date, required: true   %>
-    <%= f.select :user_id, @instructors %>
+    <%# f.select :user_id, @instructors %>
     <%= f.submit 'Create Cohort' %>
     <% end %>
   <% end %>

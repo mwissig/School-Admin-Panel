@@ -9,7 +9,12 @@ class StudentsController < ApplicationController
     if @student.save
       redirect_to @student
     else
-      render 'new'
+      p "=================================="
+      p "there was a problem"
+            p "=================================="
+      redirect_back(fallback_location: students_path)
+      msg = @student.errors.full_messages
+flash.now[:error] = msg
     end
   end
 
@@ -21,6 +26,8 @@ class StudentsController < ApplicationController
       redirect_back(fallback_location: students_path)
     else
       render 'index'
+      msg = @student.errors.full_messages
+flash.now[:error] = msg
     end
 end
 

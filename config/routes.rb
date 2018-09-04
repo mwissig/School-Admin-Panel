@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   get 'register' => 'users#new'
-  get 'login' => 'users#new'
   get 'admin' => 'users#admin'
   get 'instructors' => 'users#instructors'
   get 'admin' => 'users#admin'
@@ -13,7 +12,7 @@ Rails.application.routes.draw do
   get 'students' => 'students#index'
 
   get 'results' => 'pages#results'
-get 'your' => 'cohorts#your'
+  get 'your' => 'cohorts#your'
 
   root 'pages#home'
 

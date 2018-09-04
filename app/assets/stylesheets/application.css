@@ -19,6 +19,7 @@ html {
   font-family: 'Roboto Condensed', sans-serif;
   margin: 0 auto;
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -44,12 +45,20 @@ p {
 .container h3 {
   background-color: rgb(193, 193, 214);
 }
-
+.titlespans {
+  margin: 0;
+  max-width: 90%;
+text-align: left;
+  margin: 0px 90px;
+  margin-right: 250px;
+}
 .desc {
   text-align: center;
   margin: 1px;
 }
-
+.flash li {
+  background-color: yellow;
+}
 #hoverlogout {
   position: absolute;
   top: 10px;

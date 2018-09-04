@@ -18,7 +18,7 @@
               Education:
               <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'], required: true  %><br>
               Course:
-              <%= f.select :course_id, @courses %><br>
+              <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'} %><br>
               <%= f.submit 'Add Student' %>
             <% end %>
 
@@ -37,7 +37,7 @@
           <% if current_user.admin_priv == 0 %>
             <p>This form will assign you as the instructor for this cohort.</p>
             <%= form_for @newcohort do |f| %>
-            <%= f.select :course_id, @courses, required: true  %>
+            <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'}, required: true %>
             <%= f.text_field :name, placeholder: "Name", required: true %>
             <%= f.date_field :start_date, required: true  %>
             to
@@ -47,7 +47,7 @@
           <% end %>
         <% else %>
           <%= form_for @newcohort do |f| %>
-          <%= f.select :course_id, @courses, required: true  %>
+          <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'}, required: true %>
           <%= f.text_field :name, placeholder: "Name", required: true %>
           <%= f.date_field :start_date, required: true  %>
           to

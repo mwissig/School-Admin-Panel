@@ -11,4 +11,11 @@
       <li><%= link_to "Log in", login_path %></li>
     <% end %>
   </ul>
+  <ul class='flash'>
+<% flash.each do |key, message| %>
+<% message.each do |m| %>
+<li>  <%= m %></li>
+<% end %>
+<% end %>
+</ul>
 </div>

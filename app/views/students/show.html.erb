@@ -1,6 +1,7 @@
-<h1><%= @student.first_name %>
+<h1>
+  <%= @student.first_name %>
   <%= @student.last_name %></h1>
-
+<div class="titlespans"><span style="margin-right:10px;">ID#</span><span style="margin-right:20px;">Last Name</span><span style="margin-right:20px;">First Name</span><span style="margin-right:145px;">Email </span><span style="margin-right:25px;">Age</span><span style="margin-right:30px;">GPA</span><span style="margin-right:10px;">Education</span><span style="margin-right:145px;">Course</span><span>Cohort</span></div>
 <% @course = @courses.find_by id: @student.course_id %>
   <% @cohort = @cohorts.find_by id: @student.cohort_id %>
     Name:

@@ -19,7 +19,7 @@
 
 
       <%= form_for coh, :html => {class: 'titlebar'} do |f| %>
-      <%= f.select :course_id, @courses %>
+      <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'} %>
       <%= f.text_field :name%>
 
       <%= f.text_field :start_date, class: 'datefield' %> to

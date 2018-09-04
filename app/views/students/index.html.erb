@@ -1,5 +1,5 @@
 <h1>Students</h1>
-<span>ID# Last Name First Name Email Age GPA Education Course Cohort</span>
+<div class="titlespans"><span style="margin-right:10px;">ID#</span><span style="margin-right:20px;">Last Name</span><span style="margin-right:20px;">First Name</span><span style="margin-right:145px;">Email </span><span style="margin-right:25px;">Age</span><span style="margin-right:30px;">GPA</span><span style="margin-right:10px;">Education</span><span style="margin-right:145px;">Course</span><span>Cohort</span></div>
 
 <div class="students">
 <%= render "studentsform" %>
@@ -13,7 +13,7 @@
                       <% arr << co.id %>
                         <% @courses << arr %><% end %>
                         <span>
-                          Add new student
+                          Add new student <i class="fas fa-user-plus"></i>
                           <%= f.text_field :last_name, placeholder: "Last Name"%>
                           <%= f.text_field :first_name, placeholder: "First Name" %>
                           <%= f.text_field :email, placeholder: "Email Address" %>
@@ -21,7 +21,7 @@
                           <%= f.hidden_field :grade, value: 0.00, :class => 'text_field', :step => 0.01 %>
                           <%= f.hidden_field :cohort_id, value: 0 %>
                           <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
-                          <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'} %>
+                          <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'}, {:include_blank => 'Select a Course'} %>
                           <%= f.submit 'Add Student' %>
                         <% end %>
                       </span>
