@@ -1,11 +1,18 @@
 <% if logged_in? %>
 
 <h1>Courses</h1>
+<div class="titlespans">
+  <span style="margin-left: 280px; margin-right:10px;">#Cohorts</span>
+  <span style="margin-right:50px;">#Students</span>
+  <span style="margin-right:100px;">Title</span>
+  <span>Hours </span>
+</div>
 <% @courses.each do |c| %>
 <%= form_for c do |f| %>
 <%= link_to course_path(c) do %>
-<i class="far fa-eye"></i> <%= c.cohorts.length %> cohorts, <%= c.students.length %> students.
-<% end %> Course title:
+<i class="far fa-eye"></i> <span style="margin: 0 30px;"> <%= c.cohorts.length %> </span>
+<span style="margin: 0 30px;"><%= c.students.length %></span>
+<% end %>
   <%= f.text_field :name, placeholder: "Course Name", required: true %> Hours:
   <%= f.number_field :hours, placeholder: 0, :class => 'text_field', :step => 10, required: true %>
 
