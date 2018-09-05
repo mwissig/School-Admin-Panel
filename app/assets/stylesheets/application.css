@@ -208,20 +208,15 @@ header {
 }
 
 .frontpage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   height: 100%;
 }
 
-.frontcontents {
-  text-align: center;
-}
-.frontcontents form {
+.frontpage form {
   background-color: transparent;
   border: none;
 }
-.frontcontents form input {
+.frontpage form input {
   border-radius: 3px;
   padding: 3px 8px;
   background-color: white;
