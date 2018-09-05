@@ -1,24 +1,17 @@
-# README
-Using Rails
+# School Admin Panel
 
-See [On Heroku] https://sat-panel.herokuapp.com/
+See [On Heroku](https://sat-panel.herokuapp.com/)
 
-Things you may want to cover:
+Log in as an admin:
 
-* Ruby version
+Email: dario@nader.io
 
-* System dependencies
+password: password
 
-* Configuration
 
-* Database creation
+Log in as an instructor: 
 
-* Database initialization
+Email: dorian@rathgibson.co
 
-* How to run the test suite
+password: password
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
