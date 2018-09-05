@@ -212,20 +212,3 @@ function closeNewCohort() {
   document.getElementById('newCohortBar').classList.remove('creatorreveal');
   newCohortBarOpen = false;
 }
-
-
-function newDiv() {
-  var newdiv = document.createElement('div');
-  newdiv.style.cssText=(`position: absolute;   transform: rotate(${Math.floor(Math.random() * 360)}deg); top: ${Math.floor(Math.random() * 100)}vh; left: ${Math.floor(Math.random() * 100)}vw; border: none; color: rgba(255, 255, 255, ${Math.random() * .3}); font-size: ${Math.floor(Math.random() * 200)}px; z-index: 0;`);
-  newdiv.innerHTML="<i class='fas fa-graduation-cap animated fadeIn slideInUp'></i>";
-  document.getElementById('front').appendChild(newdiv);
-  // var newContent = document.createTextNode(`<i class='fas fa-graduation-cap'></i>`);
-// add the text node to the newly created div
-// newdiv.appendChild(newContent);
-  console.log("???")
-}
-function loopIt() {
-        setInterval(function(){ newDiv(); }, 2000);
-}
-
-loopIt();
