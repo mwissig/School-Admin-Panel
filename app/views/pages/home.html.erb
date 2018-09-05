@@ -1,27 +1,22 @@
-<div class="frontpage">
-    <h1 class="logo">The <%= @schoolname %> School<br>
+<div class="frontpage" id ="front">
+    <h1 class="logo"><small><small>Welcome<small> to</small></small></small><br>The <%= @schoolname %> School<br>
       <small>of</small>
-      Art and Technology</h1>
+      Art <small>and</small> Technology</h1>
     <h2>Administrative Panel</h2>
-    <h3>From this page you can:</h3>
+    <h3>&nbsp</h3>
     <% if logged_in? %>
       <p><%= button_to "Log out", logout_path, method: :delete %></p>
       <% if current_user.admin_priv >= 1 %>
-        <p>View, edit, add, search for, or delete all faculty and staff</p>
-        <p>View, edit, add, search for, or delete administrators</p>
-        <p>View, edit, add, search for, or delete instructors</p>
-        <p>View, edit, add, search for, or delete students</p>
-        <p>View, edit, add, search for, or delete courses</p>
-        <p>View, edit, add, search for, or delete cohorts</p>
+              <p>Your privileges:</p>
+        <p>View and edit faculty and staff information</p>
+        <p>View and edit student information</p>
+        <p>Create courses and cohorts</p>
       <% end %>
       <% if current_user.admin_priv == 0 %>
-        <p>View and search for all faculty and staff</p>
-        <p>View and search for administrators</p>
-        <p>View and search for instructors</p>
-        <p>View and search for all students</p>
-        <p>View, add, and search for all courses</p>
-        <p>View, add, and search for all cohorts</p>
-        <p>View, edit, and delete your own cohorts and grade your students</p>
+        <p>Your privileges:</p>
+        <p>View faculty and staff information</p>
+        <p>View and edit student information</p>
+        <p>Create courses and cohorts</p>
       <% end %>
     <% else %>
 

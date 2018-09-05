@@ -1,4 +1,5 @@
-<% @students.each do |s| %>
+<div class="formbox">
+  <% @students.each do |s| %>
   <%= form_for(s) do |f| %>
 
   <% @cohorts = [["No Cohort Assigned", 0]] %>
@@ -57,3 +58,4 @@
 
               </span>
             <% end %>
+          </div>

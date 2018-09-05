@@ -6,7 +6,7 @@
   <span style="margin-right:50px;">#Students</span>
   <span style="margin-right:100px;">Title</span>
   <span>Hours </span>
-</div>
+</div><div class="formbox">
 <% @courses.each do |c| %>
 <%= form_for c do |f| %>
 <%= link_to course_path(c) do %>
@@ -22,5 +22,5 @@
   <% end %>
 
 <% end %>
-
+</div>
 <% end %>

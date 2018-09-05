@@ -23,6 +23,7 @@ var staffSliderOpen = false;
 function slideoutStaff() {
   if (staffSliderOpen == false) {
     document.getElementById('staffNav').classList.remove('hidden');
+        document.getElementById('staffbutton').classList.remove('shadow');
     document.getElementById('staffNav').classList.add('reveal');
     closeCohorts();
     closeCourses();
@@ -37,12 +38,14 @@ function slideoutStaff() {
 function closeStaff() {
   document.getElementById('staffNav').classList.remove('reveal');
   staffSliderOpen = false;
+  setTimeout(function(){ document.getElementById('staffbutton').classList.add('shadow'); }, 500);
 }
 
 function slideoutStudents() {
   if (studentsSliderOpen == false) {
     document.getElementById('studentsNav').classList.remove('hidden');
     document.getElementById('studentsNav').classList.add('reveal');
+            document.getElementById('studentsbutton').classList.remove('shadow');
     closeCohorts();
     closeCourses();
     closeStaff();
@@ -59,12 +62,14 @@ function closeStudents() {
       closeStudentsSearchByName();
   closeNewStudent();
   studentsSliderOpen = false;
+    setTimeout(function(){ document.getElementById('studentsbutton').classList.add('shadow'); }, 500);
 }
 
 function slideoutCohorts() {
   if (cohortsSliderOpen == false) {
     document.getElementById('cohortsNav').classList.remove('hidden');
     document.getElementById('cohortsNav').classList.add('reveal');
+            document.getElementById('cohortsbutton').classList.remove('shadow');
     closeCourses();
     closeStudents();
     closeStaff();
@@ -79,6 +84,7 @@ function closeCohorts() {
   document.getElementById('cohortsNav').classList.remove('reveal');
   closeNewCohort();
   cohortsSliderOpen = false;
+    setTimeout(function(){ document.getElementById('cohortsbutton').classList.add('shadow'); }, 500);
 }
 
 
@@ -86,6 +92,7 @@ function slideoutCourses() {
   if (coursesSliderOpen == false) {
     document.getElementById('coursesNav').classList.remove('hidden');
     document.getElementById('coursesNav').classList.add('reveal');
+            document.getElementById('coursesbutton').classList.remove('shadow');
     closeCohorts();
     closeStudents();
     closeStaff();
@@ -100,6 +107,7 @@ function closeCourses() {
   document.getElementById('coursesNav').classList.remove('reveal');
   closeNewCourse();
   coursesSliderOpen = false;
+    setTimeout(function(){ document.getElementById('coursesbutton').classList.add('shadow'); }, 500);
 }
 
 var studentsSearchBarOpen = false;
@@ -204,3 +212,20 @@ function closeNewCohort() {
   document.getElementById('newCohortBar').classList.remove('creatorreveal');
   newCohortBarOpen = false;
 }
+
+
+function newDiv() {
+  var newdiv = document.createElement('div');
+  newdiv.style.cssText=(`position: absolute;   transform: rotate(${Math.floor(Math.random() * 360)}deg); top: ${Math.floor(Math.random() * 100)}vh; left: ${Math.floor(Math.random() * 100)}vw; border: none; color: rgba(255, 255, 255, ${Math.random() * .3}); font-size: ${Math.floor(Math.random() * 200)}px; z-index: 0;`);
+  newdiv.innerHTML="<i class='fas fa-graduation-cap animated fadeIn slideInUp'></i>";
+  document.getElementById('front').appendChild(newdiv);
+  // var newContent = document.createTextNode(`<i class='fas fa-graduation-cap'></i>`);
+// add the text node to the newly created div
+// newdiv.appendChild(newContent);
+  console.log("???")
+}
+function loopIt() {
+        setInterval(function(){ newDiv(); }, 2000);
+}
+
+loopIt();

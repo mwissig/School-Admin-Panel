@@ -1,6 +1,7 @@
 
 
 <h1>Registration for Faculty and Administration</h1>
+<div class="frontpage">
 <%= form_for(@user) do |f| %>
 <%= f.text_field :first_name, placeholder: 'Enter your first name', required: true  %> <br>
 <%= f.text_field :last_name, placeholder: 'Enter your last name', required: true  %> <br>
@@ -9,5 +10,5 @@ Highest Completed Education <%= f.select :education, ['HS', 'College', 'Masters'
 <%= f.text_field :email, placeholder: 'Enter your email', required: true %> <br>
 <%= f.password_field :password, placeholder: 'Create a password', required: true %> <br>
 <%= f.password_field :password_confirmation, placeholder: 'Confirm password', required: true %> <br>
-<%= f.submit 'Register' %>
+<%= f.submit 'Register' %></div>
 <% end %>
