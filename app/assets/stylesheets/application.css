@@ -424,11 +424,11 @@ header {
   z-index: 3;
       box-shadow: 0 1px 1px rgb(7, 13, 52);
 }
-.creator form, .searchbar form {
+.creator form, .searchbar form, #loginbar form {
   background: transparent;
   border: none;
 }
-.creator form input, .searchbar form input {
+.creator form input, .searchbar form input, #loginbar form input {
   background-color: white;
   border: 1px solid gray;
   border-radius: 3px;
@@ -455,7 +455,7 @@ header {
 }
 
 .reveal {
-  left: 150px;
+  left: 150px !important;
 }
 #staffNav {
   top: 186px;
@@ -471,7 +471,23 @@ header {
 #coursesNav {
   top: 222px;
 }
-
+#loginbar {
+  top: 186px;
+  width: auto;
+  overflow: hidden;
+  height: 29px;
+  padding: 1px 5px;
+}
+.loginbar {
+    left: -300px;
+}
+#loginbar form {
+  margin: 0;
+  display: inline;
+}
+#loginbar form input {
+margin: 0;
+}
 .searchoptions {
   position: fixed;
   background-color: rgb(255, 220, 33);
@@ -480,7 +496,7 @@ header {
   left: 150px;
   padding: 5px;
   top: 170px;
-  width: 140px;
+  width: 500px;
   height: 10px;
   overflow: hidden;
   transition-property: height;

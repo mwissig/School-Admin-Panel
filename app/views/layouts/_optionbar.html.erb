@@ -67,4 +67,14 @@
 <span onclick="revealStudentsSearchByName()">Search by name or email</span>
 <i title="Close" class="fas fa-times slider" alt="Close" onclick="closeSearchOptionsStudent()"></i>
 </div>
+<% else %>
+
+<div id="loginbar" class="loginbar optionbar hidden">
+<%= form_for(:session, url: login_path) do |f| %>
+  <%= f.email_field :email, placeholder: 'Email', require: true %>
+  <%= f.password_field :password, placeholder: 'Password', require: true %>
+  <%= f.submit 'Log in' %>
+  <i title="Close" class="fas fa-times slider" alt="Close" onclick="closeLogin()"></i>
+<% end %>
+</div>
 <% end %>

@@ -18,7 +18,25 @@ var studentsSliderOpen = false;
 var cohortsSliderOpen = false;
 var coursesSliderOpen = false;
 var staffSliderOpen = false;
+var loginSliderOpen = false;
 
+function slideoutLogin() {
+  if (loginSliderOpen == false) {
+    document.getElementById('loginbar').classList.remove('hidden');
+    document.getElementById('loginbutton').classList.remove('shadow');
+    document.getElementById('loginbar').classList.add('reveal');
+    loginSliderOpen = true;
+  } else {
+    closeLogin();
+    loginSliderOpen = false;
+  }
+}
+
+function closeLogin() {
+  document.getElementById('loginbar').classList.remove('reveal');
+  loginSliderOpen = false;
+  setTimeout(function(){ document.getElementById('loginbutton').classList.add('shadow'); }, 500);
+}
 
 function slideoutStaff() {
   if (staffSliderOpen == false) {
