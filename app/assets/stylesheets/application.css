@@ -20,6 +20,7 @@ html {
   margin: 0 auto;
   height: 100%;
   overflow-x: hidden;
+  width: calc(100% + 76px);
 }
 
 body {
@@ -96,7 +97,7 @@ p {
   max-height: 30px;
   font-size: 20px;
   width: 180px;
-  position: fixed;
+  position: absolute;
   padding: 3px;
   padding-right: 10px;
   transition-property: left;
