@@ -111,6 +111,7 @@ p {
 }
 .logoutb:hover {
   color: black;
+      text-shadow: 0 0 5px white;
   background-image: linear-gradient(to top, rgb(221, 73, 0), rgb(255, 220, 33));
 }
 .privileges {
@@ -152,6 +153,7 @@ text-align: left;
 }
 #hoverhome i:hover {
   color: rgb(221, 73, 0);
+  text-shadow: 0 0 20px white;
 }
 #hoverlogout i {
   color: white;
@@ -159,6 +161,7 @@ text-align: left;
 }
 #hoverlogout i:hover {
   color: rgb(221, 73, 0);
+    text-shadow: 0 0 20px white;
 }
 .logo {
   font-family: 'Cinzel Decorative', cursive;
@@ -325,9 +328,11 @@ select {
 }
 .sidebar li a:hover {
   color: black;
+      text-shadow: 0 0 5px white;
 }
 .sidebar li:hover {
   color: black;
+      text-shadow: 0 0 5px white;
   background-image: linear-gradient(to right, rgb(221, 73, 0), rgb(255, 220, 33));
 }
 header {
