@@ -7,7 +7,7 @@
       <li class="slider shadow" id="cohortsbutton"  onclick='slideoutCohorts()'>Cohorts</li>
       <li class="slider shadow" id="studentsbutton"  onclick='slideoutStudents()'>Students</li>
     <% else %>
-      <li><%= link_to "Register", register_path %></li>
+      <li class="shadow"><%= link_to "Register", register_path %></li>
       <li class="slider shadow" id="loginbutton" onclick='slideoutLogin()'>Log in</li>
     <% end %>
   </ul>
