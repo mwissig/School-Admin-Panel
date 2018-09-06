@@ -505,3 +505,15 @@ header {
 #studentsSearchByNameBar {
   top: 324px;
 }
+.ui-tooltip {
+  background-color: rgb(231, 215, 129) !important;
+  border-radius: 0 !important;
+  border-bottom-right-radius: 8px !important;
+  border: none !important;
+  box-shadow: none !important;
+      box-shadow: 1px 1px 1px rgb(7, 13, 52) !important;
+          font-family: 'Roboto Condensed', sans-serif !important;
+}
+.ui-tooltip-content: {
+    font-family: 'Roboto Condensed', sans-serif !important;
+}
