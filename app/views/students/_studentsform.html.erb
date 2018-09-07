@@ -31,7 +31,10 @@
                         <%= f.text_field :last_name, class: 'namefield' %>
                         <%= f.text_field :first_name, class: 'namefield' %>
                         <%= f.text_field :email, class: 'emailfield' %>
-                        <%= f.number_field :age %>
+                        <%= f.date_select :age %>
+                        <% @age = Time.now - s.age.to_datetime %>
+                        <% @yage = @age/1.year.seconds %>
+                        <%= @yage.round %>
                         <%= f.number_field :grade, :class => 'text_field', :step => 0.01 %>
                         <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
                         <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'} %>

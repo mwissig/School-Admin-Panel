@@ -3,10 +3,10 @@ class Student < ApplicationRecord
   belongs_to :course
   before_save :default_values
   before_save { self.email = email.downcase }
-  before_save { self.age = age.to_i }
   before_save { self.grade = grade.to_f }
   validates :email, presence: true, length: { maximum: 100 }
-  validates :age, numericality: { less_than_or_equal_to: 150,  only_integer: true }
+  validates_date :age, on_or_before: Time.now.year - 16
+  validates_date :age, on_or_after: Time.now.year - 150
   def full_name
     self.first_name + " " + self.last_name
   end

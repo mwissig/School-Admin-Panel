@@ -170,12 +170,12 @@ text-align: left;
 }
 form {
   text-align: center;
+  font-size: 12px;
 }
 a {
   text-decoration: none;
   color: black;
 }
-
 a:hover {
   color: rgb(221, 73, 0);
 }
