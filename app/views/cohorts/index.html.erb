@@ -26,14 +26,4 @@
 
     <% end %>
   </div>
-  <div class="formbox">
-<%= form_for @cohort do |f| %> <i class="fas fa-plus"></i> New Cohort
-<%= f.select :course_id, @courses, {:include_blank => 'Select a Course'} %>
-<%= f.text_field :name, placeholder: "Name"%>
-<%= f.date_field :start_date, class: 'datefield' %> to
-<%= f.date_field :end_date, class: 'datefield' %>
-<%= f.hidden_field :user_id, value: 0 %>
-<%= f.submit 'Create Cohort' %>
-<% end %>
-</div>
 <% end %>
