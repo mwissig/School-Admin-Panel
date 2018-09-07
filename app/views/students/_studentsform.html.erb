@@ -31,7 +31,7 @@
                         <%= f.text_field :last_name, class: 'namefield' %>
                         <%= f.text_field :first_name, class: 'namefield' %>
                         <%= f.text_field :email, class: 'emailfield' %>
-                        <%= f.date_select :age %>
+<%= f.date_select :age, start_year: 1868, end_year: Date.today.year, required: true  %>
                         <% @age = Time.now - s.age.to_datetime %>
                         <% @yage = @age/1.year.seconds %>
                         <%= @yage.round %>

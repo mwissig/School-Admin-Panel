@@ -12,7 +12,7 @@
               <%= f.text_field :first_name, placeholder: "First Name", required: true  %><br>
               <%= f.text_field :last_name, placeholder: "Last Name", required: true %><br>
               <%= f.text_field :email, placeholder: "Email Address", required: true %><br>
-     <%= f.date_select :age, required: true  %><br>
+<%= f.date_select :age, start_year: 1868, end_year: Date.today.year, required: true  %><br>
               <%= f.hidden_field :grade, value: 0.00, :class => 'text_field', :step => 0.01 %>
               <%= f.hidden_field :cohort_id, value: 1 %>
               Education:

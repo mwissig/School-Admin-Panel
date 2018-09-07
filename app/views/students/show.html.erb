@@ -1,31 +1,73 @@
 <h1>
   <%= @student.first_name %>
   <%= @student.last_name %></h1>
-<div class="titlespans"><span style="margin-right:10px;">ID#</span><span style="margin-right:20px;">Last Name</span><span style="margin-right:20px;">First Name</span><span style="margin-right:145px;">Email </span><span style="margin-right:25px;">Age</span><span style="margin-right:30px;">GPA</span><span style="margin-right:10px;">Education</span><span style="margin-right:145px;">Course</span><span>Cohort</span></div>
-<% @course = @courses.find_by id: @student.course_id %>
-  <% @cohort = @cohorts.find_by id: @student.cohort_id %>
-    Name:
-    <%= @student.first_name %>
-    <%= @student.last_name %><br>
-    Email:
-    <%= @student.email %><br>
-    Age:
-    <%= @student.age %><br>
-    Current grade:
-    <%= @student.grade %><br>
-    Highest completed education:
-    <%= @student.education %><br>
-    Course:
-    <% if @student.course_id != 0 %>
-      <%= link_to "#{@course.name}", course_path(@course.id) %>
-    <% else %>
-      Not Assigned
-    <% end %>
+<div class="bluebox">
 
-    <br>
-    Cohort:
-    <% if @student.cohort_id != 0 %>
-      <%= link_to "#{@cohort.name}", cohort_path(@cohort.id) %>
-    <% else %>
-      Not Assigned
-    <% end %>
+    <%= form_for(@student) do |f| %>
+
+    <% @cohorts = [["No Cohort Assigned", 0]] %>
+      <% Cohort.all.each do |coh| %>
+        <% if coh.course_id == @student.course_id %>
+          <% arr = [] %>
+            <% arr << coh.name %>
+              <% arr << coh.id %>
+                <% @cohorts << arr %><% end %>
+              <% end %>
+
+              <% @courses = [] %>
+                <% Course.all.each do |co| %>
+                  <% arr = [] %>
+                    <% arr << co.name %>
+                      <% arr << co.id %>
+                        <% @courses << arr %><% end %>
+
+  Student #:
+                        <% if @student.id < 100 && @student.id > 9 %>
+                          <%= "0" + @student.id.to_s %>
+                          <% elsif @student.id < 10 %>
+                            <%= "00" + @student.id.to_s %>
+                          <% else %>
+                            <%= @student.id.to_s %>
+                          <% end %><br>
+                          Name:
+
+                          <%= f.text_field :first_name, class: 'namefield' %>         <%= f.text_field :last_name, class: 'namefield' %><br>
+                          Email address:
+                          <%= f.text_field :email, class: 'emailfield' %><br>
+                          Date of birth:
+  <%= f.date_select :age, start_year: 1868, end_year: Date.today.year, required: true  %><br>
+  Current age:
+                          <% @age = Time.now - @student.age.to_datetime %>
+                          <% @yage = @age/1.year.seconds %>
+                          <%= @yage.round %><br>
+                          Current grade:
+                          <%= f.number_field :grade, :class => 'text_field', :step => 0.01 %><br>
+                          Highest completed education:
+                          <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %><br>
+                          Course:
+                          <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'} %>
+                          <% if @student.course_id > 0 %>
+                            <%= link_to course_path(@student.course) do %>
+                            <i title="View Course Info" class="fas fa-arrow-left"></i> <i title="View Course Info" class="far fa-eye"></i>
+                          <% end %>
+                        <% else %>
+                          <i class="fas fa-arrow-left" style="color:gray"></i> <i class="far fa-eye-slash" style="color:gray"></i>
+                        <% end %>
+<br> Cohort:
+                        <%= f.select :cohort_id, @cohorts, class: 'cohortfield' %>
+                        <% if @student.cohort_id > 0 %>
+                          <%= link_to cohort_path(@student.cohort) do %>
+                        <i title="View Cohort Info" class="fas fa-arrow-left"></i> <i title="View Cohort Info" class="far fa-eye"></i>
+                        <% end %>
+                      <% else %>
+                        <i class="fas fa-arrow-left" style="color:gray"></i> <i class="far fa-eye-slash" style="color:gray"></i>
+                      <% end %><br>
+                      <%= button_tag( :class => "button") do %>
+                      Commit Changes
+                      <i title="Commit Changes" class="fas fa-pencil-alt"></i>
+                    <% end %>
+                  <% end %>
+
+
+
+  </div>
