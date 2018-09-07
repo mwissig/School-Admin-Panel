@@ -172,6 +172,7 @@ text-align: left;
 form {
   text-align: center;
   font-size: 12px;
+  max-width: calc(100vw - 160px);
 }
 a {
   text-decoration: none;
@@ -222,7 +223,7 @@ form:hover {
 form:nth-child(even) {
   background-color: rgba(192, 198, 210, 0.7);
   border-bottom: 1px solid gray;
-  padding: 0 5px;
+  padding: 0 0px;
 }
 form:nth-child(even):hover, form:nth-child(odd):hover {
   background-color: rgb(255, 220, 33);
@@ -236,7 +237,7 @@ form:nth-child(even):hover, form:nth-child(odd):hover {
 form:nth-child(odd) {
   background-color: rgba(255, 255, 255, 0.7);
   border-bottom: 1px solid gray;
-  padding: 0 5px;
+  padding: 0 0px;
 }
 
 button {
