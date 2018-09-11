@@ -1,6 +1,7 @@
 <h1>
   <%= @student.first_name %>
   <%= @student.last_name %></h1>
+  <%= link_to "delete this", student_path(@student), remote: true, method: :delete %>
 <div class="bluebox">
 
     <%= form_for(@student) do |f| %>
@@ -57,7 +58,10 @@
                         <%= f.select :cohort_id, @cohorts, class: 'cohortfield' %>
                         <% if @student.cohort_id > 0 %>
                           <%= link_to cohort_path(@student.cohort) do %>
-                        <i title="View Cohort Info" class="fas fa-arrow-left"></i> <i title="View Cohort Info" class="far fa-eye"></i>
+                        <i title="View Cohort Info" class="fas fa-arrow-left"></i> <i title="View Cohort Info" class="far fa-eye"></i><br>
+                        <% if @student.cohort.user != nil %>
+                        <br>taught by <%= link_to @student.cohort.user.first_name + " " + @student.cohort.user.last_name, user_path(@student.cohort.user) %>
+                        <% end %>
                         <% end %>
                       <% else %>
                         <i class="fas fa-arrow-left" style="color:gray"></i> <i class="far fa-eye-slash" style="color:gray"></i>

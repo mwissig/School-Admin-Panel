@@ -250,8 +250,6 @@ button {
 
 button:hover {
   background-color: rgb(221, 73, 0);
-  text-shadow: 0 0 2px white;
-  border-radius: 50%;
 }
 
 input[type="number"] {
@@ -558,22 +556,52 @@ background-color: rgb(221, 73, 0);
   width: auto;
 }
 .bluebox form input {
-  border: 1px solid gray;
-  background-color: white;
+  border: none;
+  border-bottom: 1px dotted white;
+  background-color: rgb(7, 13, 52);
+  color: white;
   border-radius: 3px;
   margin: 2px;
-          font-size: 16px;
+    font-size: 16px !important;
+}
+.bluebox form input:hover {
+  color: black;
 }
 .bluebox form{
   background-color: transparent !important;
   border: none !important;
     color: white !important;
-    font-size: 18 !important;
+    font-size: 16px !important;
+}
+.bluebox form input[type="number"] {
+  width: 60px;
 }
 
-.bluebox form select {
-  background-color: white;
-  border: 1px solid gray;
+.bluebox form select, .bluebox form select option {
+  background-color: rgb(7, 13, 52);
   border-radius: 3px;
   margin: 2px;
+      font-size: 16px !important;
+      border: none;
+      border-bottom: 1px dotted white;
+      color: white;
+}
+.bluebox form select:hover, .bluebox form select option:hover, .bluebox form button:hover {
+  background-color: rgb(255, 220, 33);
+  color: black;
+}
+.bluebox form button {
+      font-size: 16px !important;
+      border: none;
+      border-bottom: 1px dotted white;
+  background-color: rgb(7, 13, 52);
+      color: white;
+}
+.bluebox .emailfield {
+  width: 250px;
+}
+@media only screen and (max-device-width: 1300px) {
+    form > * {
+            border-bottom: dotted 1px black;
+    }
 }

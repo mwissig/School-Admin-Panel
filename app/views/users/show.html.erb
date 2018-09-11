@@ -38,8 +38,8 @@
   <% end %>
 <% end %>
 
-<% if @user.admin_priv == 0 && @user_cohorts != nil %>
-<h3><%= link_to "Your Cohorts", your_path %></h3>
+<% if @user.admin_priv == 0 && @user_cohorts != nil && @user.cohorts.length > 0 %>
+<h3><%= link_to @user.first_name + " " + @user.last_name + "'s Cohorts", your_path %></h3>
   <% @user_cohorts.each do |coh| %>
 
     <% @num_stu = 0 %>

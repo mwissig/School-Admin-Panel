@@ -41,7 +41,13 @@ end
     @student = Student.new
     @students = Student.all.order(:last_name)
     @courses = Course.all
-    end
+  end
+
+  def destroy
+  @student = Student.find params[:id]
+  @student.destroy
+    redirect_to students_path
+end
 
 
   private

@@ -1,5 +1,5 @@
 <% if logged_in? %>
-  <h1><%= @cohort.name %></h1>
+  <h1><%= @cohort.course.name %>: <%= @cohort.name %></h1>
   <% if @cohort.start_date.to_datetime != nil %>
     <h2>Date:
       <%= @cohort.start_date.to_datetime.strftime("%m/%e/%y") %>
@@ -9,20 +9,19 @@
   <h3>
     <% if @cohort.user != nil %>
       Taught by
-      <%= @cohort.user.full_name %>
+      <%= link_to @cohort.user.full_name, user_path(@cohort.user) %>
     <% else %>
       No instructor selected.
     <% end %>
   </h3>
   <p>Students in This Cohort</p>
-<div class="titlespans"><span style="margin-right:10px;">ID#</span><span style="margin-right:20px;">Last Name</span><span style="margin-right:20px;">First Name</span><span style="margin-right:145px;">Email </span><span style="margin-right:25px;">Age</span><span style="margin-right:30px;">GPA</span><span style="margin-right:10px;">Education</span><span style="margin-right:145px;">Course</span><span>Cohort</span></div>
   <% @students = @cohort.students %>
     <%= render "students/studentsform" %>
 
-    <p>Students Taking this Course Not Yet Assigned a Cohort<p>
+    <p>Students That Can Be Assigned to This Cohort<p>
         <% @students = [] %>
           <% Student.all.each do |s| %>
-            <% if s.course_id == @cohort.course_id && s.cohort_id == 0 %>
+            <% if s.course_id == @cohort.course_id && s.cohort_id != @cohort.id %>
               <% @students << s %>
             <% end %>
           <% end %>

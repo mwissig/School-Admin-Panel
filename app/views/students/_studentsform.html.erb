@@ -21,6 +21,7 @@
                         <%= link_to student_path(s) do %>
                         <i title="View Student Profile" class="far fa-eye"></i>
                       <% end %>
+                      <span title="Student ID">
                       <% if s.id < 100 && s.id > 9 %>
                         <%= "0" + s.id.to_s %>
                         <% elsif s.id < 10 %>
@@ -28,14 +29,23 @@
                         <% else %>
                           <%= s.id.to_s %>
                         <% end %>
-                        <%= f.text_field :last_name, class: 'namefield' %>
-                        <%= f.text_field :first_name, class: 'namefield' %>
-                        <%= f.text_field :email, class: 'emailfield' %>
-<%= f.date_select :age, start_year: 1868, end_year: Date.today.year, required: true  %>
-                        <% @age = Time.now - s.age.to_datetime %>
+                      </span>
+                        <%= f.text_field :last_name, class: 'namefield', title: 'Last name' %>
+                        <%= f.text_field :first_name, class: 'namefield', title: 'First name' %>
+                        <%= f.text_field :email, class: 'emailfield', title: "Email address" %>
+<%= f.date_select :age, start_year: 1868, end_year: Date.today.year, required: true, title: 'Date of birth' %>
+                      <span title ='Age'>  <% @age = Time.now - s.age.to_datetime %>
                         <% @yage = @age/1.year.seconds %>
-                        <%= @yage.round %>
-                        <%= f.number_field :grade, :class => 'text_field', :step => 0.01 %>
+                        <% @y = @yage.floor %>
+                        <% if @y < 100 && @y > 9 %>
+                          <%= "&nbsp;".html_safe + @y.to_s %>
+                          <% elsif @y < 10 %>
+                            <%= "&nbsp;&nbsp;".html_safe + @y.to_s %>
+                          <% else %>
+                            <%= @y.to_s %>
+                          <% end %>
+                        </span>
+                        <%= f.number_field :grade, :class => 'text_field', :step => 0.01, title: 'GPA' %>
                         <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
                         <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'} %>
                         <% if s.course_id > 0 %>

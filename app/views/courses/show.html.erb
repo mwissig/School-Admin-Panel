@@ -32,6 +32,7 @@
                 <%= f.text_field :start_date, class: 'datefield' %>
                 to
                 <%= f.text_field :end_date, class: 'datefield' %>
+    <%= f.select :user_id, @instructorsarray %>
                 <%= f.submit 'Edit Cohort' %>
                 <%= @num_stu %>
                 students.

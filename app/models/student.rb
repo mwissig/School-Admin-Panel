@@ -14,4 +14,5 @@ class Student < ApplicationRecord
     self.course_id ||= 0
     self.cohort_id ||= 0
   end
+
 end

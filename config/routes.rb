@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   get 'students/new'
   get 'students/show'
+  delete 'student' => 'students#destroy'
   get 'users/new'
   get 'users/show'
   get 'users/index'
