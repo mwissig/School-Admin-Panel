@@ -1,7 +1,11 @@
 <div class="formbox">
   <% @students.each do |s| %>
-  <%= form_for(s) do |f| %>
 
+
+  <%= form_for(s) do |f| %>
+  <% if current_user.admin_priv > 0 %>
+
+<% end %>
   <% @cohorts = [["No Cohort Assigned", 0]] %>
     <% Cohort.all.each do |coh| %>
       <% if coh.course_id == s.course_id %>
@@ -48,16 +52,19 @@
                         <%= f.number_field :grade, :class => 'text_field', :step => 0.01, title: 'GPA' %>
                         <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
                         <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'} %>
-                        <% if s.course_id > 0 %>
+                        <% if s.course_id > 0 && s.course != nil %>
                           <%= link_to course_path(s.course) do %>
                           <i title="View Course Info" class="fas fa-arrow-left"></i> <i title="View Course Info" class="far fa-eye"></i>
                         <% end %>
                       <% else %>
                         <i class="fas fa-arrow-left" style="color:gray"></i> <i class="far fa-eye-slash" style="color:gray"></i>
                       <% end %>
-
+<% if s.course != nil && s.course_id > 0 %>
                       <%= f.select :cohort_id, @cohorts, class: 'cohortfield' %>
-                      <% if s.cohort_id > 0 %>
+                      <% else %>
+                      <%= f.select :cohort_id, "Change Course First", value: 1, :readonly => true %>
+                      <% end %>
+                      <% if s.cohort_id > 0 && s.cohort != nil %>
                         <%= link_to cohort_path(s.cohort) do %>
                       <i title="View Cohort Info" class="fas fa-arrow-left"></i> <i title="View Cohort Info" class="far fa-eye"></i>
                       <% end %>
@@ -66,6 +73,9 @@
                     <% end %>
                     <%= button_tag( :class => "button") do %>
                     <i title="Commit Changes" class="fas fa-pencil-alt"></i>
+                  <% end %>
+                  <%= link_to student_delete_path(s.id), method: :delete, data: {confirm: "WARNING: \n \n This action will permanently delete all data for this student.\n Are you sure you want to proceed?", remote: true}, class: 'delete' do %>
+                <i title="Delete Student" class="fas fa-times alt="Delete"></i>
                   <% end %>
                 <% end %>
 

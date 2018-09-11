@@ -27,7 +27,13 @@
 Role:
  <%= f.hidden_field :password, value: :password %>
  <%= f.select :admin_priv, [['Instructor', 0],["Administrator", 1]] %>
-<%= f.submit 'Edit' %>
+ <%= button_tag( :class => "button") do %>
+ <i title="Commit Changes" class="fas fa-pencil-alt"></i>
+<% end %>
+
+<%= link_to user_delete_path(u.id), method: :delete, data: {confirm: "WARNING: \n \n This action will permanently delete all data for this user.\n Are you sure you want to proceed?", remote: true}, class: 'delete' do %>
+<i title="Delete User" class="fas fa-times alt="Delete"></i>
+<% end %>
 <% end %>
 <% end %>
 <% end %>

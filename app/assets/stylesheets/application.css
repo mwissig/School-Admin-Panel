@@ -201,17 +201,17 @@ form input {
   width: 80px;
 }
 .emailfield {
-  width: 180px;
+  width: 160px;
 }
 .salary {
   width: 60px !important;
 }
 .namefield {
-  width: 80px;
+  width: 70px;
 }
 
 #student_cohort_id {
-  width: 170px;
+  width: 140px;
 }
 
 form input:hover {
@@ -600,8 +600,11 @@ background-color: rgb(221, 73, 0);
 .bluebox .emailfield {
   width: 250px;
 }
-@media only screen and (max-device-width: 1300px) {
+@media only screen and (max-device-width: 1260px) {
     form > * {
             border-bottom: dotted 1px black;
+    }
+    html {
+      overflow-x: scroll;
     }
 }

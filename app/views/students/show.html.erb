@@ -47,7 +47,7 @@
                           <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %><br>
                           Course:
                           <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'} %>
-                          <% if @student.course_id > 0 %>
+                          <% if @student.course_id > 0 && @student.course != nil %>
                             <%= link_to course_path(@student.course) do %>
                             <i title="View Course Info" class="fas fa-arrow-left"></i> <i title="View Course Info" class="far fa-eye"></i>
                           <% end %>
@@ -56,7 +56,7 @@
                         <% end %>
 <br> Cohort:
                         <%= f.select :cohort_id, @cohorts, class: 'cohortfield' %>
-                        <% if @student.cohort_id > 0 %>
+                        <% if @student.cohort_id > 0 && @student.cohort != nil %>
                           <%= link_to cohort_path(@student.cohort) do %>
                         <i title="View Cohort Info" class="fas fa-arrow-left"></i> <i title="View Cohort Info" class="far fa-eye"></i><br>
                         <% if @student.cohort.user != nil %>

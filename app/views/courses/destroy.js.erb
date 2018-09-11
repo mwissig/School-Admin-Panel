@@ -1,0 +1,5 @@
+$('.delete').bind('ajax:success', function() {
+  console.log('deleting ...');
+  $(this).closest('form').hide( "drop", {direction: "left"}, 1000 );
+
+});

@@ -16,14 +16,24 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  resources :students
-  resources :users
-  resources :courses
-  resources :cohorts
+  resources :students do
+    delete 'delete' => 'students#destroy'
+  end
+
+  resources :users do
+   delete 'delete' => 'users#destroy'
+ end
+
+  resources :courses do
+   delete 'delete' => 'courses#destroy'
+ end
+
+  resources :cohorts do
+   delete 'delete' => 'cohorts#destroy'
+ end
 
   get 'students/new'
   get 'students/show'
-  delete 'student' => 'students#destroy'
   get 'users/new'
   get 'users/show'
   get 'users/index'

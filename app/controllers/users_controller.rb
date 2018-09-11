@@ -47,6 +47,15 @@ end
     @instructors = User.where(admin_priv: 0).order(:last_name)
   end
 
+  def destroy
+  @user = User.find(params[:user_id])
+  @user.destroy
+  respond_to do |format|
+    format.js
+    format.html { p 'html_response'; redirect_to root_path }
+  end
+end
+
   private
 
   def user_params

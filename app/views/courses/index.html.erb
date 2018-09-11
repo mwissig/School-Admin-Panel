@@ -19,6 +19,13 @@
   <%= button_tag( :class => "button") do %>
   <i class="fas fa-pencil-alt"></i>
 <% end %>
+<% if c.id != 1 %>
+<%= link_to course_delete_path(c.id), method: :delete, data: {confirm: "WARNING: \n \n This action will permanently delete all data for this course.\n Are you sure you want to proceed?", remote: true}, class: 'delete' do %>
+<i title="Delete Course" class="fas fa-times alt="Delete"></i>
+<% end %>
+<% else %>
+<i title="Can not delete" class="fas fa-times alt="Delete" style="color:gray;"></i>
+<% end %>
   <% end %>
 
 <% end %>

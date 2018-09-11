@@ -44,9 +44,12 @@ end
   end
 
   def destroy
-  @student = Student.find params[:id]
+  @student = Student.find(params[:student_id])
   @student.destroy
-    redirect_to students_path
+  respond_to do |format|
+    format.js
+    format.html { p 'html_response'; redirect_to root_path }
+  end
 end
 
 

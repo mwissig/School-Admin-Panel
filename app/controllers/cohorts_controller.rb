@@ -90,6 +90,14 @@ end
     end
   end
 
+  def destroy
+  @cohort = Cohort.find(params[:cohort_id])
+  @cohort.destroy
+  respond_to do |format|
+    format.js
+    format.html { p 'html_response'; redirect_to root_path }
+  end
+end
   private
 
   def cohort_params
