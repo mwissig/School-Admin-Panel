@@ -213,7 +213,10 @@ form input {
 #student_cohort_id {
   width: 140px;
 }
-
+.formgrid {
+  display: grid;
+  grid-template-columns: 5% 10% 10% 15% 10% 5% 10% 10% 10% 10%;
+}
 form input:hover {
   background-color: rgb(240, 232, 189);
 }
