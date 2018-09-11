@@ -41,10 +41,14 @@ end
 
   def destroy
   @course = Course.find(params[:course_id])
-  @course.destroy
-  respond_to do |format|
-    format.js
-    format.html { p 'html_response'; redirect_to root_path }
+  if @course_id != 1
+    @course.destroy
+    respond_to do |format|
+      format.js
+      format.html { p 'html_response'; redirect_to root_path }
+    end
+  else
+    p "You can not delete this course"
   end
 end
 

@@ -8,6 +8,7 @@
   <span>Hours </span>
 </div><div class="formbox">
 <% @courses.each do |c| %>
+  <% if c.id != 1 %>
 <%= form_for c do |f| %>
 <%= link_to course_path(c) do %>
 <i class="far fa-eye"></i> <span style="margin: 0 30px;"> <%= c.cohorts.length %> </span>
@@ -28,6 +29,7 @@
 <% end %>
   <% end %>
 
+  <% end %>
 <% end %>
 </div>
 <% end %>
