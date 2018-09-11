@@ -41,7 +41,7 @@
 <% if @user.admin_priv == 0 && @user_cohorts != nil && @user.cohorts.length > 0 %>
 <h3><%= link_to @user.first_name + " " + @user.last_name + "'s Cohorts", your_path %></h3>
   <% @user_cohorts.each do |coh| %>
-
+<% if coh.id != 1 && coh.course_id != 1 %>
     <% @num_stu = 0 %>
       <% @students.each do |s| %>
         <% if coh.id == s.cohort_id %>
@@ -65,6 +65,7 @@
               <%= @num_stu %>
               students
             <% end %>
+                      <% end %>
                   <% end %>
           <% end %>
 

@@ -1,6 +1,8 @@
 <% if logged_in? %>
-
-  <h1>Course</h1>
+<%if @course.id == 1 %>
+  This course does not exist.
+<% else %>
+  <h1><%= @course.name %></h1>
   <%= form_for @course do |f| %>
   <%= f.text_field :name, placeholder: "Course Name", required: true %>
   Hours:
@@ -66,5 +68,7 @@
         <%= f.submit 'Create Cohort' %>
       <% end %>
     <% end %>
+
+      <% end %>
 
   <% end %>

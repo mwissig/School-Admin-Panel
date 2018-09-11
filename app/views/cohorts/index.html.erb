@@ -2,6 +2,7 @@
 <h1>All Cohorts</h1>
   <div class="formbox">
 <% Cohort.all.each do |co| %>
+<% if co.id != 1 && co.course_id != 1 %>
   <% @num_stu = 0 %>
   <% @students.each do |s| %>
     <% if co.id == s.cohort_id %>
@@ -21,9 +22,18 @@
     <%= f.select :user_id, @instructors %>
     <%= button_tag( :class => "button") do %>
     <i class="fas fa-pencil-alt"></i>
-  <% end %>
+
+    <% if co.id != 1 %>
+    <%= link_to cohort_delete_path(co.id), method: :delete, data: {confirm: "WARNING: \n \n This action will permanently delete all data for this course.\n Are you sure you want to proceed?", remote: true}, class: 'delete' do %>
+    <i title="Delete Cohort" class="fas fa-times alt="Delete"></i>
+    <% end %>
+    <% else %>
+    <i title="Can not delete" class="fas fa-times alt="Delete" style="color:gray;"></i>
     <% end %>
 
+  <% end %>
+    <% end %>
+<% end %>
     <% end %>
   </div>
 <% end %>
