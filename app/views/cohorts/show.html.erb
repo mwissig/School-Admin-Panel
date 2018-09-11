@@ -19,9 +19,6 @@
   </h3>
 <p>Edit this Cohort</p>
 
-<h2><%= link_to "#{@cohort.name}", cohort_path(@cohort) %> <small>(<%= @cohort.course.name %>) </small></h2>
-    <p class="desc">Date: <%= @cohort.start_date.to_datetime.strftime("%m/%e/%y") %> to <%= @cohort.end_date.to_datetime.strftime("%m/%e/%y") %></p>
-
 
       <%= form_for @cohort do |f| %>
       <%= f.select :course_id, @selectcourses %>

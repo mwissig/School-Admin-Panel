@@ -51,7 +51,7 @@
                         </span>
                         <%= f.number_field :grade, :class => 'text_field', :step => 0.01, title: 'GPA' %>
                         <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
-                        <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'} %>
+                        <%= f.select :course_id, @courses %>
                         <% if s.course_id > 0 && s.course != nil %>
                           <%= link_to course_path(s.course) do %>
                           <i title="View Course Info" class="fas fa-arrow-left"></i> <i title="View Course Info" class="far fa-eye"></i>
@@ -59,7 +59,7 @@
                       <% else %>
                         <i class="fas fa-arrow-left" style="color:gray"></i> <i class="far fa-eye-slash" style="color:gray"></i>
                       <% end %>
-<% if s.course != nil && s.course_id > 0 %>
+                      <% if s.course != nil && s.course_id > 0 %>
                       <%= f.select :cohort_id, @cohorts, class: 'cohortfield' %>
                       <% else %>
                       <%= f.select :cohort_id, "Change Course First", value: 1, :readonly => true %>
