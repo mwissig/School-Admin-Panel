@@ -31,6 +31,9 @@
               <p>
 
                 <%= form_for coh do |f| %>
+                <%= link_to cohort_path(coh) do %>
+                <i title="View Cohort" class="far fa-eye"></i>
+                <% end %>
                 <%= @coursename.name %>
                 <%= f.text_field :name%>
 
@@ -38,10 +41,12 @@
                 to
                 <%= f.text_field :end_date, class: 'datefield' %>
                 <%= f.select :user_id, @instructorsarray %>
-                <%= f.submit 'Edit Cohort' %>
                 <%= @num_stu %>
                 students.
-                <%= link_to "View #{coh.name}", cohort_path(coh) %>
+                <%= button_tag( :class => "button") do %>
+                <i title="Commit Changes" class="fas fa-pencil-alt"></i>
+              <% end %>
+
               <% end %>
             <% end %>
           <% else %>
