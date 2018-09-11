@@ -1,6 +1,9 @@
 <% @users.each do |u| %>
 
 <%= form_for(u) do |f| %>
+<%= link_to user_path(u) do %>
+<i title="View User Profile" class="far fa-eye"></i>
+<% end %>
 <% if current_user.admin_priv == 0 %>
 
 <span><%= f.text_field :first_name, :readonly => true %>

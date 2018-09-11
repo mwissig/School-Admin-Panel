@@ -8,6 +8,9 @@
   Hours:
   <%= f.number_field :hours, placeholder: 0, :class => 'text_field', :step => 10, required: true %>
   <%= f.submit 'Edit Course' %>
+  <%= link_to course_delete_path(@course.id), method: :delete, data: {confirm: "WARNING: \n \n This action will permanently delete all data for this course.\n Are you sure you want to proceed?", remote: true}, class: 'delete' do %>
+  <i title="Delete Student" class="fas fa-times alt="Delete"></i>
+  <% end %>
 <% end %>
 <h2>Cohorts in this Course</h2>
 <% if @course.cohorts != nil %>

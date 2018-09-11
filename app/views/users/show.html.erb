@@ -7,7 +7,19 @@
 
   <%= f.text_field :first_name, :class => 'namefield' %>
   <%= f.text_field :last_name, :class => 'namefield' %>
-  <%= f.number_field :age %>
+  <%= f.date_select :age, start_year: 1868, end_year: Date.today.year, required: true  %>
+  <span title ='Age'>
+    <% @age = Time.now - @user.age.to_datetime %>
+    <% @yage = @age/1.year.seconds %>
+    <% @y = @yage.floor %>
+    <% if @y < 100 && @y > 9 %>
+      <%= "&nbsp;".html_safe + @y.to_s %>
+      <% elsif @y < 10 %>
+        <%= "&nbsp;&nbsp;".html_safe + @y.to_s %>
+      <% else %>
+        <%= @y.to_s %>
+      <% end %>
+    </span>
   <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
   <%= f.text_field :email %>
   <%= f.number_field :salary, :class => 'text_field salary', :step => 1000, :readonly => true %>
@@ -20,14 +32,30 @@
 
     <%= f.text_field :first_name, :class => 'namefield' %>
     <%= f.text_field :last_name, :class => 'namefield' %>
-    <%= f.number_field :age %>
+      <%= f.date_select :age, start_year: 1868, end_year: Date.today.year, required: true  %>
+    <span title ='Age'>  <% @age = Time.now - @user.age.to_datetime %>
+      <% @yage = @age/1.year.seconds %>
+      <% @y = @yage.floor %>
+      <% if @y < 100 && @y > 9 %>
+        <%= "&nbsp;".html_safe + @y.to_s %>
+        <% elsif @y < 10 %>
+          <%= "&nbsp;&nbsp;".html_safe + @y.to_s %>
+        <% else %>
+          <%= @y.to_s %>
+        <% end %>
+      </span>
     <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
     <%= f.text_field :email %>
     <%= f.number_field :salary, :class => 'text_field salary', :step => 1000 %>
     Role:
     <%= f.select :admin_priv, [['Instructor', 0],["Administrator", 1]] %>
     <%= f.hidden_field :password, value: :password %>
-    <%= f.submit 'Submit Changes' %>
+    <%= button_tag( :class => "button") do %>
+    <i title="Commit Changes" class="fas fa-pencil-alt"></i>
+   <% end %>
+   <%= link_to user_delete_path(@user.id), method: :delete, data: {confirm: "WARNING: \n \n This action will permanently delete all data for this user.\n Are you sure you want to proceed?", remote: true}, class: 'delete' do %>
+   <i title="Delete User" class="fas fa-times alt="Delete"></i>
+   <% end %>
 
   <% else %>
 

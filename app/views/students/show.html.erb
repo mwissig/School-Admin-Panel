@@ -5,7 +5,9 @@
 <div class="bluebox">
 
   <%= form_for(@student) do |f| %>
-
+  <%= link_to student_delete_path(@student.id), method: :delete, data: {confirm: "WARNING: \n \n This action will permanently delete all data for this student.\n Are you sure you want to proceed?", remote: true}, class: 'delete' do %>
+Delete Student <i title="Delete Student" class="fas fa-times alt="Delete"></i>
+  <% end %>
     <br>
 <% @cohorts = [["No Cohort Assigned", 0]] %>
   <% Cohort.all.each do |coh| %>
