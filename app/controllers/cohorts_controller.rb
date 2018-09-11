@@ -40,17 +40,24 @@ flash.now[:error] = msg
   def update
     if @cohort.update(cohort_params)
       p 'cohort successfully updated'
-      redirect_to @cohort
+      redirect_back(fallback_location: cohorts_path)
     else
       msg = @cohort.errors.full_messages
 flash.now[:error] = msg
-      render 'index'
+      redirect_back(fallback_location: cohorts_path)
     end
 end
 
   def show
     @cohort = Cohort.find(params[:id])
     @students = Student.all.order(:last_name)
+    @selectcourses = []
+    Course.all.each do |co|
+      arr = []
+      arr << co.name
+      arr << co.id
+      @selectcourses << arr
+    end
   end
 
   def your
@@ -92,11 +99,15 @@ end
 
   def destroy
   @cohort = Cohort.find(params[:cohort_id])
+    if @cohort.id != 1
   @cohort.destroy
   respond_to do |format|
     format.js
     format.html { p 'html_response'; redirect_to root_path }
   end
+else
+  p "You can not delete this cohort"
+end
 end
   private
 

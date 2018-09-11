@@ -41,7 +41,7 @@ end
 
   def destroy
   @course = Course.find(params[:course_id])
-  if @course_id != 1
+  if @course.id != 1
     @course.destroy
     respond_to do |format|
       format.js

@@ -17,6 +17,27 @@
       No instructor selected.
     <% end %>
   </h3>
+<p>Edit this Cohort</p>
+
+<h2><%= link_to "#{@cohort.name}", cohort_path(@cohort) %> <small>(<%= @cohort.course.name %>) </small></h2>
+    <p class="desc">Date: <%= @cohort.start_date.to_datetime.strftime("%m/%e/%y") %> to <%= @cohort.end_date.to_datetime.strftime("%m/%e/%y") %><p>
+
+
+      <%= form_for @cohort, :html => {class: 'titlebar'} do |f| %>
+      <%= f.select :course_id, @selectcourses %>
+      <%= f.text_field :name%>
+
+      <%= f.text_field :start_date, class: 'datefield' %> to
+      <%= f.text_field :end_date, class: 'datefield' %>
+         <%= @cohort.students.length %> students
+         <%= button_tag( :class => "button") do %>
+         <i title="Commit Changes" class="fas fa-pencil-alt"></i>
+       <% end %>
+       <%= link_to cohort_delete_path(@cohort.id), method: :delete, data: {confirm: "WARNING: \n \n This action will permanently delete all data for this cohort.\n Are you sure you want to proceed?", remote: true}, class: 'delete' do %>
+     <i title="Delete Cohort" class="fas fa-times alt="Delete"></i>
+       <% end %>
+      <% end %>
+
   <p>Students in This Cohort</p>
   <% @students = @cohort.students %>
     <%= render "students/studentsform" %>

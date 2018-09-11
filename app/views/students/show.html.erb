@@ -55,8 +55,9 @@
                           <i class="fas fa-arrow-left" style="color:gray"></i> <i class="far fa-eye-slash" style="color:gray"></i>
                         <% end %>
 <br> Cohort:
+
+                        <% if @student.course_id != 1 &&  @student.course != nil %>
                         <%= f.select :cohort_id, @cohorts, class: 'cohortfield' %>
-                        <% if @student.cohort_id > 0 && @student.cohort != nil %>
                           <%= link_to cohort_path(@student.cohort) do %>
                         <i title="View Cohort Info" class="fas fa-arrow-left"></i> <i title="View Cohort Info" class="far fa-eye"></i><br>
                         <% if @student.cohort.user != nil %>
@@ -64,6 +65,7 @@
                         <% end %>
                         <% end %>
                       <% else %>
+                      <%= f.hidden_field :cohort_id, value: 1, placeholder: "Select a Course", class: 'cohortfield' %>
                         <i class="fas fa-arrow-left" style="color:gray"></i> <i class="far fa-eye-slash" style="color:gray"></i>
                       <% end %><br>
                       <%= button_tag( :class => "button") do %>
