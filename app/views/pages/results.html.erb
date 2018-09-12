@@ -1,7 +1,12 @@
 <h1>Students matching "<%= @results %>" </h1>
 <% if @final_results != nil %>
-<% @final_results.each do |res| %>
-Student # <%= res.id %>: <%= link_to "#{res.first_name} #{res.last_name}", res %> <%= res.email %> <br>
-
+<% @students = @final_results %>
+<%# @final_results.each do |res| %>
+<!-- Student # <%# res.id %>: <%# link_to "#{res.first_name} #{res.last_name}", res %> <%# res.email %> <br> -->
+<% if current_user.admin_priv > 0 %>
+      <%= render "students/studentsformeditable" %>
+<% else %>
+  <%= render "students/studentsform" %>
 <% end %>
 <% end %>
+<%# end %>

@@ -18,7 +18,7 @@
     <p class="desc">Date: <%= coh.start_date.to_datetime.strftime("%m/%e/%y") %> to <%= coh.end_date.to_datetime.strftime("%m/%e/%y") %><p>
 
 
-      <%= form_for coh, :html => {class: 'titlebar'} do |f| %>
+      <%= form_for coh do |f| %>
       <%= f.select :course_id, @courses, {:include_blank => 'Select a Course'} %>
       <%= f.text_field :name%>
 
@@ -27,47 +27,11 @@
       <%= f.submit 'Edit Cohort' %>
          <%= @num_stu %> students:
       <% end %>
-
-<% @students.each do |s| %>
-<% if s.cohort_id == coh.id %>
-<%= form_for(s) do |f| %>
-
-<% @cohorts = [["No Cohort Assigned", 0]] %>
-<% Cohort.all.each do |coh| %>
-  <% if coh.course_id == s.course_id %>
-  <% arr = [] %>
-  <% arr << coh.name %>
-  <% arr << coh.id %>
-  <% @cohorts << arr %>
-  <% end %>
-<% end %>
-
-<span>
-<% if s.id < 100 && s.id > 9 %>
-<%= "0" + s.id.to_s %>
-<% elsif s.id < 10 %>
-<%= "00" + s.id.to_s %>
-<% else %>
-<%= s.id.to_s %>
-<% end %>
-<%= f.text_field :last_name, class: 'namefield',:readonly => true %>
-<%= f.text_field :first_name, class: 'namefield',:readonly => true %>
- <%= f.text_field :email, class: 'emailfield', :readonly => true %>
- <%=  f.number_field :grade, :class => 'text_field', :step => 0.01 %>
-    <%= f.select :cohort_id, @cohorts, class: 'cohortfield' %>
-    <%= link_to student_path(s) do %>
-    View Student Profile <i class="far fa-eye"></i>
-    <% end %>
-<%= f.submit 'Submit Changes' %> <i class="fas fa-pencil-alt"></i>
-
-<% end %>
-
-</span>
-<% end %>
+<% @students = Student.where(cohort_id: coh.id) %>
+        <%= render "students/studentsformeditable" %>
 <% end %>
 <% end %>
 
 <% else %>
 <p>You have no cohorts</p>
-<% end %>
 <% end %>

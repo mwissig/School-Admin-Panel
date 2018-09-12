@@ -36,9 +36,12 @@
       <% end %>
 
   <p>Students in This Cohort</p>
-  <% @students = @cohort.students %>
+    <% @students = @cohort.students %>
+  <% if @cohort.user.id == current_user.id || current_user.admin_priv > 0 %>
+        <%= render "students/studentsformeditable" %>
+  <% else %>
     <%= render "students/studentsform" %>
-
+<% end %>
     <p>Students That Can Be Assigned to This Cohort<p>
         <% @students = [] %>
           <% Student.all.each do |s| %>
@@ -46,6 +49,13 @@
               <% @students << s %>
             <% end %>
           <% end %>
-          <%= render "students/studentsform" %>
+
+          <% if @cohort.user.id == current_user.id || current_user.admin_priv > 0 %>
+        <%= render "students/studentsformeditable" %>
+          <% else %>
+            <%= render "students/studentsform" %>
+        <% end %>
+
+
         <% end %>
                 <% end %>

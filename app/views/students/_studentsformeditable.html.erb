@@ -1,0 +1,81 @@
+<div class="formbox">
+  <% @students.each do |s| %>
+  <%= form_for(s) do |f| %>
+  <% @cohorts = [["No Cohort Assigned", 0]] %>
+    <% Cohort.all.each do |coh| %>
+      <% if coh.course_id == s.course_id %>
+        <% arr = [] %>
+          <% arr << coh.name %>
+            <% arr << coh.id %>
+              <% @cohorts << arr %><% end %>
+            <% end %>
+
+            <% @courses = [] %>
+              <% Course.all.each do |co| %>
+                <% arr = [] %>
+                  <% arr << co.name %>
+                    <% arr << co.id %>
+                      <% @courses << arr %><% end %>
+                      <span>
+                        <%= link_to student_path(s) do %>
+                        <i title="View Student Profile" class="far fa-eye"></i>
+                      <% end %>
+                      <span title="Student ID">
+                      <% if s.id < 100 && s.id > 9 %>
+                        <%= "0" + s.id.to_s %>
+                        <% elsif s.id < 10 %>
+                          <%= "00" + s.id.to_s %>
+                        <% else %>
+                          <%= s.id.to_s %>
+                        <% end %>
+                      </span>
+                        <%= f.text_field :last_name, class: 'namefield', title: 'Last name' %>
+                        <%= f.text_field :first_name, class: 'namefield', title: 'First name' %>
+                        <%= f.text_field :email, class: 'emailfield', title: "Email address" %>
+<%= f.date_select :age, start_year: 1868, end_year: Date.today.year, required: true, title: 'Date of birth' %>
+                      <span title ='Age'>  <% @age = Time.now - s.age.to_datetime %>
+                        <% @yage = @age/1.year.seconds %>
+                        <% @y = @yage.floor %>
+                        <% if @y < 100 && @y > 9 %>
+                          <%= "&nbsp;".html_safe + @y.to_s %>
+                          <% elsif @y < 10 %>
+                            <%= "&nbsp;&nbsp;".html_safe + @y.to_s %>
+                          <% else %>
+                            <%= @y.to_s %>
+                          <% end %>
+                        </span>
+                        <%= f.number_field :grade, :class => 'text_field', :step => 0.01, title: 'GPA' %>
+                        <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
+                        <%= f.select :course_id, @courses %>
+                        <% if s.course_id > 0 && s.course != nil %>
+                          <%= link_to course_path(s.course) do %>
+                          <i title="View Course Info" class="fas fa-arrow-left"></i> <i title="View Course Info" class="far fa-eye"></i>
+                        <% end %>
+                      <% else %>
+                        <i class="fas fa-arrow-left" style="color:gray"></i> <i class="far fa-eye-slash" style="color:gray"></i>
+                      <% end %>
+                      <% if s.course != nil && s.course_id > 0 %>
+                      <%= f.select :cohort_id, @cohorts, class: 'cohortfield' %>
+                      <% else %>
+                      <%= f.select :cohort_id, "Change Course First", value: 1, :readonly => true %>
+                      <% end %>
+                      <% if s.cohort_id > 0 && s.cohort != nil %>
+                        <%= link_to cohort_path(s.cohort) do %>
+                      <i title="View Cohort Info" class="fas fa-arrow-left"></i> <i title="View Cohort Info" class="far fa-eye"></i>
+                      <% end %>
+                    <% else %>
+                      <i class="fas fa-arrow-left" style="color:gray"></i> <i class="far fa-eye-slash" style="color:gray"></i>
+                    <% end %>
+                    <%= button_tag( :class => "button") do %>
+                    <i title="Commit Changes" class="fas fa-pencil-alt"></i>
+                  <% end %>
+                  <%= link_to student_delete_path(s.id), method: :delete, data: {confirm: "WARNING: \n \n This action will permanently delete all data for this student.\n Are you sure you want to proceed?", remote: true}, class: 'delete' do %>
+                <i title="Delete Student" class="fas fa-times alt="Delete"></i>
+                  <% end %>
+                <% end %>
+
+              </span>
+            <% end %>
+          </div>
+<% else %>
+<div class="formbox">
