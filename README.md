@@ -42,3 +42,9 @@ Courses
 
 Only the President has full access
 ![President](https://raw.githubusercontent.com/mwissig/School-Admin-Panel/master/public/screenshots/Screenshot%20from%202018-09-12%2012-46-45.png)
+
+Search bar
+![Search](https://raw.githubusercontent.com/mwissig/School-Admin-Panel/master/public/screenshots/Screenshot%20from%202018-09-12%2016-23-50.png)
+
+Search results
+![Resutlts](https://raw.githubusercontent.com/mwissig/School-Admin-Panel/master/public/screenshots/Screenshot%20from%202018-09-12%2016-24-05.png)
