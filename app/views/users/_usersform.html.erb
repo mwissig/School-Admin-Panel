@@ -38,10 +38,24 @@
   </span>
 <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
 <%= f.text_field :email %>
-
+<% if current_user.admin_priv > u.admin_priv %>
   <%= f.number_field :salary, :class => 'text_field salary', :step => 1000 %>
+  <% else %>
+    <%= f.number_field :salary, :class => 'text_field salary', :step => 1000, :readonly => true %>
+  <% end %>
 Role:
+<% if current_user.admin_priv > u.admin_priv %>
  <%= f.select :admin_priv, [['Instructor', 0],["Administrator", 1]] %>
+ <% else %>
+       <%= f.hidden_field :admin_priv, value: :admin_priv %>
+ <div class='textfield'><% if u.admin_priv == 0 %>
+   Instructor
+   <% elsif u.admin_priv == 1 %>
+     Administrator
+     <% elsif u.admin_priv == 2 %>
+       President
+     <% end %></div>
+ <% end %>
  <%= f.hidden_field :password, value: :password %>
  <%= button_tag( :class => "button") do %>
  <i title="Commit Changes" class="fas fa-pencil-alt"></i>

@@ -209,6 +209,11 @@ form input {
 .namefield {
   width: 70px;
 }
+.textfield {
+  display: inline;
+  width: 100px;
+  margin: 0 16px;
+}
 
 #student_cohort_id {
   width: 140px;
