@@ -44,11 +44,11 @@
     <%= f.number_field :salary, :class => 'text_field salary', :step => 1000, :readonly => true %>
   <% end %>
 Role:
-<% if current_user.admin_priv > u.admin_priv %>
+<% if current_user.admin_priv > u.admin_priv || current_user.admin_priv == 2 %>
  <%= f.select :admin_priv, [['Instructor', 0],["Administrator", 1]] %>
  <% else %>
        <%= f.hidden_field :admin_priv, value: :admin_priv %>
- <div class='textfield'><% if u.admin_priv == 0 %>
+ <div class='textfield'><% if u.admin_priv == 0 || current_user.admin_priv == 2 %>
    Instructor
    <% elsif u.admin_priv == 1 %>
      Administrator

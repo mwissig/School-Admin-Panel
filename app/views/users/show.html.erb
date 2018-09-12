@@ -22,13 +22,13 @@
     </span>
   <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
   <%= f.text_field :email %>
-  <% if current_user.admin_priv > @user.admin_priv %>
+  <% if current_user.admin_priv > @user.admin_priv || current_user.admin_priv == 2 %>
     <%= f.number_field :salary, :class => 'text_field salary', :step => 1000 %>
     <% else %>
       <%= f.number_field :salary, :class => 'text_field salary', :step => 1000, :readonly => true %>
     <% end %>
   Role:
-  <% if current_user.admin_priv > @user.admin_priv %>
+  <% if current_user.admin_priv > @user.admin_priv || current_user.admin_priv == 2 %>
    <%= f.select :admin_priv, [['Instructor', 0],["Administrator", 1]] %>
    <% else %>
       <%= f.hidden_field :admin_priv, value: :admin_priv %>
