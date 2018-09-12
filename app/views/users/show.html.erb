@@ -3,7 +3,7 @@
 <h1><%= @user.full_name %></h1>
 
 <%= form_for(@user) do |f| %>
-<% if current_user.id == @user.id %>
+<% if current_user.id == @user.id && current_user.admin_priv != 2 %>
 
   <%= f.text_field :first_name, :class => 'namefield' %>
   <%= f.text_field :last_name, :class => 'namefield' %>
@@ -28,7 +28,7 @@
   <%= f.password_field :password, value: :password %>
   <%= f.submit 'Submit Changes' %>
 
-  <% elsif current_user.admin_priv > 0 && current_user.id != @user.id %>
+  <% elsif current_user.admin_priv > 0 %>
 
     <%= f.text_field :first_name, :class => 'namefield' %>
     <%= f.text_field :last_name, :class => 'namefield' %>
