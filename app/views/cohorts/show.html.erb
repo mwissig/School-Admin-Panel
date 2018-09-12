@@ -1,6 +1,6 @@
 <% if logged_in? %>
 <%if @cohort.id == 1 || @cohort.course_id == 1 %>
-  This cohort does not exist.
+  <h1>This cohort does not exist.</h1>
 <% else %>
   <h1><%= @cohort.course.name %>: <%= @cohort.name %></h1>
   <% if @cohort.start_date.to_datetime != nil %>
