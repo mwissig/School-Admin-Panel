@@ -1,7 +1,7 @@
 <% if logged_in? %>
 
 
-<div id="studentsSearchBar" class="searchbar hidden">
+<div id="studentsSearchByNameBar" class="searchbar hidden">
   Search students by name or email
   <%= form_tag('/results', method: 'get') do %>
     <%= text_field_tag(:q) %><br>
