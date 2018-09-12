@@ -39,7 +39,7 @@ end
 
   def admin
     @users = User.all
-    @admins = User.where(admin_priv: 1).order(:last_name)
+    @admins = User.where('admin_priv > 0').order(:last_name)
   end
 
   def instructors
