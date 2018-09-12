@@ -22,23 +22,9 @@
     </span>
   <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
   <%= f.text_field :email %>
-  <% if current_user.admin_priv > @user.admin_priv || current_user.admin_priv == 2 %>
-    <%= f.number_field :salary, :class => 'text_field salary', :step => 1000 %>
-    <% else %>
-      <%= f.number_field :salary, :class => 'text_field salary', :step => 1000, :readonly => true %>
-    <% end %>
+  <%= f.number_field :salary, :class => 'text_field salary', :step => 1000, :readonly => true %>
   Role:
-  <% if current_user.admin_priv > @user.admin_priv %>
-   <%= f.select :admin_priv, [['Instructor', 0],["Administrator", 1]] %>
-   <% else %>
-      <%= f.hidden_field :admin_priv, value: @user.admin_priv %>
-   <div class='textfield'><% if @user.admin_priv == 0 %>
-     Instructor
-     <% elsif @user.admin_priv == 1 %>
-       Administrator
-       <% elsif @user.admin_priv == 2 %>
-         President
-       <% end %></div><% end %>
+  <%= f.select :admin_priv, [['Instructor', 0],["Administrator", 1]] %>
   <%= f.password_field :password, value: :password %>
   <%= f.submit 'Submit Changes' %>
 
@@ -60,9 +46,26 @@
       </span>
     <%= f.select :education, ['HS', 'College', 'Masters', 'PHD'] %>
     <%= f.text_field :email %>
-    <%= f.number_field :salary, :class => 'text_field salary', :step => 1000 %>
+    <% if current_user.admin_priv > @user.admin_priv || current_user.admin_priv == 2 %>
+      <%= f.number_field :salary, :class => 'text_field salary', :step => 1000 %>
+    <% else %>
+      <%= f.number_field :salary, :class => 'text_field salary', :step => 1000, :readonly => true %>
+    <% end %>
     Role:
-    <%= f.select :admin_priv, [['Instructor', 0],["Administrator", 1]] %>
+    <% if current_user.admin_priv > @user.admin_priv %>
+      <%= f.select :admin_priv, [['Instructor', 0],["Administrator", 1]] %>
+    <% else %>
+      <%= f.hidden_field :admin_priv, value: @user.admin_priv %>
+      <div class='textfield'>
+        <% if @user.admin_priv == 0 %>
+          Instructor
+          <% elsif @user.admin_priv == 1 %>
+            Administrator
+            <% elsif @user.admin_priv == 2 %>
+              President
+            <% end %>
+          </div>
+        <% end %>
     <%= f.hidden_field :password, value: :password %>
     <%= button_tag( :class => "button") do %>
     <i title="Commit Changes" class="fas fa-pencil-alt"></i>
