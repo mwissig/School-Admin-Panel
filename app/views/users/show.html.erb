@@ -31,7 +31,7 @@
   <% if current_user.admin_priv > @user.admin_priv %>
    <%= f.select :admin_priv, [['Instructor', 0],["Administrator", 1]] %>
    <% else %>
-      <%= f.hidden_field :admin_priv, value: :admin_priv %>
+      <%= f.hidden_field :admin_priv, value: @user.admin_priv %>
    <div class='textfield'><% if @user.admin_priv == 0 %>
      Instructor
      <% elsif @user.admin_priv == 1 %>

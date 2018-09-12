@@ -47,7 +47,7 @@ Role:
 <% if current_user.admin_priv > u.admin_priv %>
  <%= f.select :admin_priv, [['Instructor', 0],["Administrator", 1]] %>
  <% else %>
-       <%= f.hidden_field :admin_priv, value: :admin_priv %>
+       <%= f.hidden_field :admin_priv, value: u.admin_priv %>
  <div class='textfield'><% if u.admin_priv == 0 %>
    Instructor
    <% elsif u.admin_priv == 1 %>
